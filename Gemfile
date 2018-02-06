@@ -19,9 +19,17 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Use Rubocop for static code analysis
 gem 'rubocop', '>= 0.52.1'
 
+# Use Tiny TDS for database access for Active Record
 gem 'tiny_tds', '2.1.1'
+
+# Use activerecord-sqlserver-adapter for connecting to MS SQL Server
+gem 'activerecord-sqlserver-adapter', '5.1.6'
+
+# Use Devise for authentication services
+gem 'devise', '4.4.1'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
