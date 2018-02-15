@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  root 'pages#home'
-  get 'pages/home'
-  get 'pages/about'
+  get 'static/home'
+
+  get 'users/new'
+
+  get 'users/show'
+
+  get 'users/create'
+
+  root 'static#home'
+
 end
