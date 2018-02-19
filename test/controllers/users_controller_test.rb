@@ -7,12 +7,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get show" do
-    get users_show_url
-    assert_response :success
-  end
-
-  test "should get create" do
-    get users_create_url
+    get lists_path
     assert_response :success
   end
 

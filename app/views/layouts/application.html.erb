@@ -6,14 +6,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render  "layouts/shim" %>
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top">
-      <div class="container">
-        
-      </div>
-    </header>
+    <%= render  "layouts/header" %>
     <div class="container">
         <%= yield %>
     </div>
