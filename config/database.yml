@@ -1,25 +1,31 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
+
 default: &default
-  adapter: sqlite3
+  adapter: sqlserver
+  encoding: utf-8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: DevTheWishList
+  dataserver: <%= ENV['WISH_LIST_DATASERVER'] %>
+  username: <%= ENV['WISH_LIST_DEV_USERNAME'] %>
+  password: <%= ENV['WISH_LIST_DEV_PASSWORD'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: TestTheWishList
+  dataserver: <%= ENV['WISH_LIST_DATASERVER'] %>
+  username: <%= ENV['WISH_LIST_TEST_USERNAME'] %>
+  password: <%= ENV['WISH_LIST_TEST_PASSWORD'] %>
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: TheWishList
+  host: <%= ENV['WISH_LIST_RDS_HOSTNAME'] %>
+  port: <%= ENV['WISH_LIST_RDS_PORT'] %>
+  username: <%= ENV['WISH_LIST_RDS_USERNAME'] %>
+  password: <%= ENV['WISH_LIST_RDS_PASSWORD'] %>
