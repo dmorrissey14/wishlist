@@ -9,17 +9,27 @@
       padding: 10px 0;
       border-top: 1px solid #e8e8e8;
     }
-    .name {
-      margin-top: 5em;
-      padding-top: 0;
+    .navbar-brand {
       font-weight:bold;
+      margin-top: .2cm;
+      align-self: center;
+      
     }
     .description {
       display: block;
-      margin-left: 60px;
-      img {
-        display: block;
-        padding: 5px 0;
-      }
+      margin-top: .6cm;
+      margin-left: 1cm;
+    }
+    .modify {
+      border: black;
+      margin-right: .2cm;
+      margin-top: .1cm;
+    
+    }
+    .delete {
+      border: black;
+      margin-right: .2cm;
+      margin-top: .1cm;
+
     }
   }

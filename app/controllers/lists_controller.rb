@@ -26,20 +26,22 @@ class ListsController < ApplicationController
       @list.name = params[:lists][:name]
       @list.description = params[:lists][:description]
       #list.create(params[:name],params[:description])
-      debugger
       if @list.save
-        debugger
         flash[:success] = "List Created!"
       else
-        debugger
         @feed_items = []
       end
     end
     
+    def modify
+
+    end
+
     def destroy
-      #@list.destroy
-      #flash[:success] = "List Deleted"
-      #render 'user/show'
+      id = params[:id]
+      list = List.find_by_id(id);
+      list.destroy
+      flash[:success] = "List Deleted"
     end
   
   end

@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   root 'static#home'
 
   get '/lists', to: 'users#show'
+  
+  post '/lists/modifylist', to: 'lists#modify', as: 'modify'
+
+  post '/lists/destroylist', to: 'lists#destroy', as: 'destroy'
 
   get '/login', to: 'static#login'
 
