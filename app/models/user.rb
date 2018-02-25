@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   # Associations
   has_and_belongs_to_many :groups
-  has_many :lists
+  has_many :list
 
   # Validations
   validates :email_hash, presence: true,
