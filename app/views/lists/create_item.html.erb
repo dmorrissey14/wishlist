@@ -1,0 +1,33 @@
+<h1>lists#create_item</h1>
+<p>Find me in app/views/lists/create_item.html.erb</p>
+
+<!-- app/views/home/sign_up.html.erb -->
+<div class="mainContent">
+  <div class="grid">
+    <h1 class="largeHeader">Create New Item:</h1>
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:Item, url: saveitem_path) do |f| %>
+      
+      <%= f.label :Description %>
+      <%= f.text_field :Description, class: 'form-control' %>
+
+      <%= f.label :Comments %>
+      <%= f.text_field :Comments, class: 'form-control' %>
+
+      <%= f.label :Link %>
+      <%= f.text_field :Link, class: 'form-control' %>
+
+      <%= f.label :Quantity %>
+      <%= f.text_field :Quantity, class: 'form-control' %>
+
+      <%= f.hidden_field :listId, value: @list_id %>
+
+      
+      <%= f.submit "Save Item", class: "btn btn-primary" %>
+    <% end %>
+
+    </div><!-- end column 2 contact form -->
+  </div><!-- end grid -->
+</div><!-- end mainContent -->
+
+

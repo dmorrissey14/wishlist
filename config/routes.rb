@@ -21,6 +21,12 @@ Rails.application.routes.draw do
 
   # get '/groups', to: "groups#foo"
 
+#  post '/lists/create_item', to: 'lists#create_item', as: 'createitem'
+
+  get '/lists/create_item', to: 'lists#create_item', as: 'createitem'
+
+  post '/lists/save_item', to: 'lists#save_item', as: 'saveitem'
+
   post '/lists/createlist', to: 'lists#save', as: 'save'
 
   get '/signup', to: 'users#new'

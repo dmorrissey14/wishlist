@@ -41,6 +41,21 @@ class ListsController < ApplicationController
 
     end
 
+    def create_item
+      
+      @list_id = params[:list_id]
+      list_id = params[:list_id]
+      list = List.find_by_id(list_id)
+      @list = List.find_by_id(@list_id)
+
+    end
+
+    def save_item
+      templist = ListItem.new
+      ListItem.create(params)
+
+    end
+
     def get_list
       id = params[:id]
       list = List.find_by_id(id)

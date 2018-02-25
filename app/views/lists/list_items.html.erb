@@ -2,7 +2,7 @@
 <p>Find me in app/views/lsits/list_items.html.erb</p>
 
   <ul class="nav navbar-nav navbar-right">
-    <input type="button" onclick="location.href='createitem';" value="Add New Item" />
+    <input type="button" onclick="location.href='create_item?list_id=<%=@list.id%>';" value="Add New Item" />
   </ul>
 <div class="col-md-8">
   <% if @items.rows.any? %>

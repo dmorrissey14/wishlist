@@ -11,6 +11,20 @@ class ListItem < ApplicationRecord
 
   # Returns whether or not the requested quantity  of the list item
   # has been purchased.
+  def self.create(params)
+
+    @list = List.find(params[:Item][:listId])
+    @newListItem = ListItem.new
+    #newListItem = ListItem.create(description: params[:Item][:Description], list: @list)
+    @newListItem.description = params[:Item][:Description]
+    @newListItem.list_id = params[:Item][:listId]
+    @newListItem.comments = params[:Item][:Comments]
+    @newListItem.site_link = params[:Item][:Link]
+    @newListItem.quantity = params[:Item][:Quantity]
+    @newListItem.purchased = 0
+    @newListItem.save 
+    @newListItem
+  end
   def purchased?
     quantity == purchased
   end
