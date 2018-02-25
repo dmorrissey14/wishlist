@@ -1,6 +1,9 @@
 <h1>lists#list_items</h1>
 <p>Find me in app/views/lsits/list_items.html.erb</p>
 
+  <ul class="nav navbar-nav navbar-right">
+    <input type="button" onclick="location.href='createitem';" value="Add New Item" />
+  </ul>
 <div class="col-md-8">
   <% if @items.rows.any? %>
     <h3><%= @list.name %> Items</h3>
@@ -32,14 +35,18 @@
                 <% end %>
                 </p>
                 <p>
-                  <a class="btn btn-primary" href="#">Modify</a> <a class="btn btn-primary" href="#">Delete</a>
+                  <a class="btn btn-primary" href="#">Modify</a> <a class="btn btn-primary" href="destroyitem?id=<%=f[0]%>&list_id=<%=f[1]%>">Delete</a>
                 </p>
               </p>
+              
             </div>
           </div>
         </div>
       </div>
     <% end %>
+    <% else %>
+      <h3> No Items in List :( </h3>
   <% end %>
 </div>
+
   

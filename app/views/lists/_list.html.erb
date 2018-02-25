@@ -5,7 +5,7 @@
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-					</button> <a class="navbar-brand" href="lists/get_list?id=<%= list.id%>"> <%= list.name %></a>
+					</button> <a class="navbar-brand" href="lists/get_list?id=<%=list.id%>"> <%= list.name %></a>
 				</div>
 			
 				<ul class="collapse navbar-collapse" id="description">
@@ -16,10 +16,10 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="modify">
-              <%= button_to 'Modify List', {:controller => "lists", :action => "modify", :id => list.id}, :method=>:post %>
+              <%= button_to 'Modify List', {:controller => "lists", :action => "list_items", :id => list.id}, :method=>:post %>
 						</li>
             <li class="delete">
-              <%=  button_to 'Delete List', {:controller => "lists", :action => "destroy", :id => list.id}, :method=>:post %>
+              <%=  button_to 'Delete List', {:controller => "lists", :action => "destroylist", :id => list.id}, :method=>:post %>
 						</li>
 					</ul>
 				</ul>

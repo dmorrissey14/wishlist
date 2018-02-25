@@ -15,8 +15,12 @@ class ListItem < ApplicationRecord
     quantity == purchased
   end
 
-  def find(id)
-    list_items = ListItem.connection.select_all("SELECT * FROM list_items WHERE list_id = #{id}")
+  def find(listid)
+    list_items = ListItem.connection.select_all("SELECT * FROM list_items WHERE list_id = #{listid}")
     return list_items
+  end
+
+  def destroyitem(id)
+    list_items = ListItem.connection.select_all("DELETE FROM list_items WHERE id = #{id}")
   end
 end

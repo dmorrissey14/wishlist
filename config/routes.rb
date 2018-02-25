@@ -3,11 +3,15 @@ Rails.application.routes.draw do
 
   get '/lists', to: 'users#show'
   
-  post '/lists/modifylist', to: 'lists#modify', as: 'modify'
+  post '/lists/destroylist', to: 'lists#destroylist', as: 'destroylist'
 
-  post '/lists/destroylist', to: 'lists#destroy', as: 'destroy'
+  get '/lists/modifyitem', to: 'lists#modifyitem', as: 'modifyitem'
+
+  get '/lists/destroyitem', to: 'lists#destroyitem', as: 'destroyitem'
 
   get '/lists/list_items', to: 'lists#list_items'
+
+  post '/lists/list_items', to: 'lists#list_items'
 
   get '/lists/get_list', to: 'lists#get_list'
 

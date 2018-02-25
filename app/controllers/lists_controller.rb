@@ -38,7 +38,6 @@ class ListsController < ApplicationController
       @list = List.find_by_id(id)
       listitem = ListItem.new
       @items = listitem.find(id)
-      #result=ActiveRecord::Base.connection.select_all("SELECT id from list_items WHERE list_id =?", [id])
 
     end
 
@@ -50,14 +49,18 @@ class ListsController < ApplicationController
 
     end
 
-    def modify
-
-    end
-
-    def destroy
+    def destroylist
       id = params[:id]
       list = List.find_by_id(id)
       list.destroy
+      flash[:success] = "List Deleted"
+    end
+
+    def destroyitem
+      id = params[:id]
+      @list_id = params[:list_id]
+      listitem = ListItem.new
+      @items = listitem.destroyitem(id)
       flash[:success] = "List Deleted"
     end
   
