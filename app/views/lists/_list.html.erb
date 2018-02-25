@@ -18,10 +18,10 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="modify">
-              <%= button_to 'Modify List',{:controller => "lists", :action => "modify", :id => list.id}, :method=>:post %>
+              <%= button_to 'Modify List', {:controller => "lists", :action => "modify", :id => list.id}, :method=>:post %>
 						</li>
             <li class="delete">
-              <%= button_to 'Delete List',{:controller => "lists", :action => "destroy", :id => list.id}, :method=>:post %>
+              <%=  button_to 'Delete List', {:controller => "lists", :action => "destroy", :id => list.id}, :method=>:post %>
 						</li>
 				</div>
 				
