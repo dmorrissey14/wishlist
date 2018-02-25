@@ -8,11 +8,10 @@
 					</button> <a class="navbar-brand" href="lists/get_list?id=<%= list.id%>"> <%= list.name %></a>
 				</div>
 			
-				<div class="collapse navbar-collapse" id="description">
-					<ul class="nav navbar-nav ">
+				<ul class="collapse navbar-collapse" id="description">
+					<ul class="nav navbar-nav navbar-center">
             <div class="description" >
               <%= list.description %>
-
             </div>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -22,8 +21,8 @@
             <li class="delete">
               <%=  button_to 'Delete List', {:controller => "lists", :action => "destroy", :id => list.id}, :method=>:post %>
 						</li>
-				</div>
-				
+					</ul>
+				</ul>
 			</nav>
 		</div>
 	</div>

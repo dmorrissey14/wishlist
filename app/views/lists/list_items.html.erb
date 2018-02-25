@@ -1,12 +1,45 @@
 <h1>lists#list_items</h1>
 <p>Find me in app/views/lsits/list_items.html.erb</p>
 
-  <div class="col-md-8">
-    <% if @items.rows.any? %>
-      <h3><%= @list.name %> Items</h3>
-      <ol class="items">
-      <%= render partial: 'items', collection: @items %>
-      </ol>
+<div class="col-md-8">
+  <% if @items.rows.any? %>
+    <h3><%= @list.name %> Items</h3>
+    <% @items.rows.each do |f|%>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <p style="float: left;">
+                <div class="thumbnail">
+                  <img alt="Bootstrap Thumbnail Second" src= "<%= f[4] %>" />
+                <div class="caption">
+              </p>
+              <p style="float: right;">
+                <h3>
+                  <%= f[2] %>
+                </h3>
+                <p>
+                  <%= f[3] %>
+                </p>
+                <p>
+                  Quantity: <%= f[5] %>
+                </p>
+                <p>
+                <% if f[6] == "1" %>
+                  Purchased: Yes
+                <% else %>
+                  Purchased: No
+                <% end %>
+                </p>
+                <p>
+                  <a class="btn btn-primary" href="#">Modify</a> <a class="btn btn-primary" href="#">Delete</a>
+                </p>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </div>
+  <% end %>
+</div>
   
