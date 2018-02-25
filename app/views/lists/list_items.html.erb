@@ -1,0 +1,12 @@
+<h1>lists#list_items</h1>
+<p>Find me in app/views/lsits/list_items.html.erb</p>
+
+  <div class="col-md-8">
+    <% if @items.rows.any? %>
+      <h3><%= @list.name %> Items</h3>
+      <ol class="items">
+      <%= render partial: 'items', collection: @items %>
+      </ol>
+    <% end %>
+  </div>
+  

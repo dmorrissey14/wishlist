@@ -14,4 +14,9 @@ class ListItem < ApplicationRecord
   def purchased?
     quantity == purchased
   end
+
+  def find(id)
+    list_items = ListItem.connection.select_all("SELECT * FROM list_items WHERE list_id = #{id}")
+    return list_items
+  end
 end

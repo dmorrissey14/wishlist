@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   post '/lists/destroylist', to: 'lists#destroy', as: 'destroy'
 
+  get '/lists/list_items', to: 'lists#list_items'
+
+  get '/lists/get_list', to: 'lists#get_list'
+
   get '/login', to: 'static#login'
 
   get '/lists/createlist', to: 'lists#create'
