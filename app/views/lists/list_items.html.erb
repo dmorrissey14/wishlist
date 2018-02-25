@@ -14,7 +14,9 @@
             <div class="row">
               <p style="float: left;">
                 <div class="thumbnail">
-                  <img alt="Bootstrap Thumbnail Second" src= "<%= f[4] %>" />
+                  <% if f[4]!="" %>
+                    <img alt="Bootstrap Thumbnail Second" src= "<%= f[4] %>" />
+                  <% end %>
                 <div class="caption">
               </p>
               <p style="float: right;">
