@@ -5,39 +5,40 @@
     <input type="button" onclick="location.href='create_item?list_id=<%=@list.id%>';" value="Add New Item" />
   </ul>
 <div class="col-md-8">
-  <% if @items.rows.any? %>
+  <% if @items.any? %>
     <h3><%= @list.name %> Items</h3>
-    <% @items.rows.each do |f|%>
+    <% @items.each do |f|%>
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
             <div class="row">
               <p style="float: left;">
                 <div class="thumbnail">
-                  <% if f[4]!="" %>
-                    <img alt="Bootstrap Thumbnail Second" src= "<%= f[4] %>" />
+                  <% if f.site_link != "" %>
+                    <!-- This requires that the site_link property is set to an image URL, rather than a page. -->
+                    <img alt="Bootstrap Thumbnail Second" src= "<%= f.site_link %>" />
                   <% end %>
                 <div class="caption">
               </p>
               <p style="float: right;">
                 <h3>
-                  <%= f[2] %>
+                  <%= f.description %>
                 </h3>
                 <p>
-                  <%= f[3] %>
+                  <%= f.comments %>
                 </p>
                 <p>
-                  Quantity: <%= f[5] %>
+                  Quantity: <%= f.quantity %>
                 </p>
                 <p>
-                <% if f[6]==1 %>
+                <% if f.purchased? %>
                   Purchased: Yes
                 <% else %>
                   Purchased: No
                 <% end %>
                 </p>
                 <p>
-                  <a class="btn btn-primary" href="#">Modify</a> <a class="btn btn-primary" href="destroyitem?id=<%=f[0]%>&list_id=<%=f[1]%>">Delete</a>
+                  <a class="btn btn-primary" href="#">Modify</a> <a class="btn btn-primary" href="destroyitem?id=<%=f.id%>&list_id=<%=f.list.id%>">Delete</a>
                 </p>
               </p>
               

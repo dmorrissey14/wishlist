@@ -22,12 +22,6 @@ class List < ApplicationRecord
     user.id == owner.id
   end
 
-  def self.create(name, description)
-    list = List.new(name, description)
-    list.save
-    list
-  end
-
   # Returns whether or not the provided user can view the list.
   def viewer?(user)
     return true unless user.id != owner.id

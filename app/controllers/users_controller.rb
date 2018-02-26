@@ -3,8 +3,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    #@user = User.find(params[:id])
-    @user = User.find_by_id(1)
-    @list = @user.list
+    @user = User.find(1)
+    @list = @user.lists
   end
 end

@@ -2,7 +2,7 @@
 <p>Find me in app/views/users/show.html.erb</p>
 
   <div class="col-md-8">
-    <% if @user.list.any? %>
+    <% if @user.lists.any? %>
       <h3><%= @user.first_name %> <%= @user.last_name %>'s Lists</h3>
       <ol class="list">
         <%= render @list %>

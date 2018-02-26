@@ -20,7 +20,7 @@
       <%= f.label :Quantity %>
       <%= f.text_field :Quantity, class: 'form-control' %>
 
-      <%= f.hidden_field :listId, value: @list_id %>
+      <%= f.hidden_field :listId, value: @list.id %>
 
       
       <%= f.submit "Save Item", class: "btn btn-primary" %>
