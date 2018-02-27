@@ -20,8 +20,8 @@
     @current_user = nil
   end
 
-  def hash_email(email_address)
-    email_address = email_address.downcase
-    hashed_email_address = BCrypt::Password.create(email_address)
+  def calculate_hash(input)
+    hash = Digest::SHA512.hexdigest(input)
+    hash = hash[0..24]
   end
 end 

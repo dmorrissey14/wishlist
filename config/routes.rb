@@ -3,11 +3,13 @@ Rails.application.routes.draw do
 
   get '/lists', to: 'users#show'
 
-  get '/login', to: 'static#login'
-
   # get '/groups', to: "groups#foo"
 
+  get 'users/show'
+
   get '/signup', to: 'users#new'
+
+  post '/signup',  to: 'users#create'
 
   get 'static/home'
 
@@ -16,5 +18,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create' #processes login data
   
   delete '/logout',  to: 'sessions#destroy'
+
+  resources :users 
 
 end

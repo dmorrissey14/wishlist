@@ -3,15 +3,31 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email_hash: hash_email(params[:session][:email]))
-    if user && user.authenticate(params[:session][:password])
+    hashed_password = calculate_hash(params[:session][:password])
+    hashed_email = calculate_hash(params[:session][:email])
+    user = User.find_by(email_hash: hashed_email)
+
+    if user
+      puts "found user"
+    else 
+      puts "did not find user"
+    end
+
+    if user && (user[:password_hash] == hashed_password)
       log_in user
       #successful authentication, render user page
-      #redirect_to user
+      puts "login success"
+      redirect_to user
     else
       #failed authentication, render the login page
-      #render 'new'
+      flash.now[:danger] = 'Invalid email/password combination'
+      puts "login failed digest:"
+      puts hashed_password
+      puts "db pw hash:"
+      puts user[:password_hash]
+      render 'new'
     end
+
   end
 
   def destroy
