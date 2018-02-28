@@ -3,7 +3,7 @@ require 'test_helper'
 class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should redirect on successful user creation" do
     # send a post request to user/create
-    post "/users", params: { session: { email: "tester@test.com", password: "testpass" } }
+    post "/signup", params: { session: { email: "tester999@test.com", password: "testpass" } }
     assert_response :redirect
   end
 
@@ -12,9 +12,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get show" do
-    @user = users(:testuser)
-    get lists_path, params: { id: @user[:id]}
-    assert_response :success
+  test "should block show if there is no logged in user" do
+    get lists_path
+    assert_response :redirect
   end
 end
