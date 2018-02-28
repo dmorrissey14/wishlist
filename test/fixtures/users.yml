@@ -1,0 +1,6 @@
+testuser:
+  id: 1
+  email_hash: b3f9760d4a6d4e18b5bba6958 #testuser@test.com
+  password_hash: 78ddc8555bb1677ff5af75ba5 #testpass
+  first_name: NULL
+  last_name: NULL
