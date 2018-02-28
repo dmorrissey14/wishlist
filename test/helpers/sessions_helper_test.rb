@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class SessionsHelperTest < ActionView::TestCase
   test "session helper functions work" do
     @user = users(:testuser)

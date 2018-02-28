@@ -8,15 +8,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-<<<<<<< HEAD
-    #get users_new_url
-    #assert_response :success
-  end
-
-  test "should get show" do
-    #get lists_path
-    #assert_response :success
-=======
     get new_user_url
     assert_response :success
   end
@@ -25,6 +16,5 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @user = users(:testuser)
     get lists_path, params: { id: @user[:id]}
     assert_response :success
->>>>>>> origin/authentication
   end
 end
