@@ -1,10 +1,11 @@
 <h1>lists#list_items</h1>
 <p>Find me in app/views/lsits/list_items.html.erb</p>
 
+
+<div class="container-fluid"; style="float:center;">
   <ul class="nav navbar-nav navbar-right">
     <input type="button" onclick="location.href='create_item?list_id=<%=@list.id%>';" value="Add New Item" />
   </ul>
-<div class="col-md-8">
   <% if @items.any? %>
     <h3><%= @list.name %> Items</h3>
     <% @items.each do |f|%>
@@ -12,7 +13,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="row">
-              <p style="float: left;">
+              <p style="float:right;">
                 <div class="thumbnail">
                   <% if f.site_link != "" %>
                     <!-- This requires that the site_link property is set to an image URL, rather than a page. -->
@@ -20,7 +21,7 @@
                   <% end %>
                 <div class="caption">
               </p>
-              <p style="float: right;">
+              <p style="float:right;">
                 <h3>
                   <%= f.description %>
                 </h3>

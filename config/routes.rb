@@ -15,13 +15,7 @@ Rails.application.routes.draw do
 
   get '/lists/get_list', to: 'lists#get_list'
 
-  get '/login', to: 'static#login'
-
   get '/lists/createlist', to: 'lists#create'
-
-  # get '/groups', to: "groups#foo"
-
-#  post '/lists/create_item', to: 'lists#create_item', as: 'createitem'
 
   get '/lists/create_item', to: 'lists#create_item', as: 'createitem'
 
@@ -40,6 +34,9 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create' #processes login data
   
   delete '/logout',  to: 'sessions#destroy'
+
+  # get '/groups', to: "groups#foo"
+
 
   resources :users 
 
