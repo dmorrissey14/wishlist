@@ -1,0 +1,86 @@
+// Place all the styles related to the Static controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Home page */
+// TODO: REORG ORDER OF CSS
+
+$main-grey-color: #EFEFEF;
+$dark-grey-text: #A9A9A9;
+$blue-contrast: #CAEBF2;
+$red-accent: #FF3B3f;
+
+html{
+  height: 100%
+}
+
+body{
+  height:100%;
+}
+
+.center {
+  text-align: center;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+#title{
+  padding-top: 40px;
+  padding-bottom: 0px;
+  font-size: 8em;
+  color: $dark-grey-text;
+  text-shadow: 2px 2px #d9d9d9;
+}
+
+#dot-separator{
+  color:$red-accent;
+  font-size: 3em;
+}
+
+.bg{
+  background-image: image-url("/background-gift.jpeg");
+  height: 100%; 
+  // background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.home-landing{
+  height:1000px;
+  overflow:hidden;
+}
+
+.container-fluid{
+  padding:0px;
+}
+
+.sales-pitch{
+  background-color: rgba(202, 235, 242, 0.7);
+  font-size: 2em;
+  color:#545454;
+  margin-top:15px;
+}
+
+.start-button{
+  background-color:$red-accent;
+  color:white;
+  margin-top:25px;
+}
+
+#width-1{
+  width:500px;
+}
+
+#width-2{
+  width:400px;
+}
+
+#width-3{
+  width:600px;
+}
