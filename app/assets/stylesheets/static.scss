@@ -59,3 +59,28 @@ textarea {
 .container-fluid{
   padding:0px;
 }
+
+.sales-pitch{
+  background-color: rgba(202, 235, 242, 0.7);
+  font-size: 2em;
+  color:#545454;
+  margin-top:15px;
+}
+
+.start-button{
+  background-color:$red-accent;
+  color:white;
+  margin-top:25px;
+}
+
+#width-1{
+  width:500px;
+}
+
+#width-2{
+  width:400px;
+}
+
+#width-3{
+  width:600px;
+}

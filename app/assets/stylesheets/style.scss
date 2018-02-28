@@ -28,7 +28,7 @@ body{
 
 @font-face{
   font-family: 'Roboto';
-  src:font-url('Roboto-Regular.ttf') format('truetype');
+  src:font-url('Roboto-Thin.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -44,8 +44,16 @@ body{
   font-family: 'Roboto', sans-serif;
 }
 
+.signika{
+  font-family: 'Signika', 'sans-serif';
+}
+
 .navbar{
   font-family: 'Signika', sans-serif;
+}
+
+.navbar-collapse{
+  border-bottom: 1px solid $blue-contrast !important;
 }
 
 .navbar-custom{
