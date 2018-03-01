@@ -10,7 +10,7 @@
 case Rails.env
 when 'development'
   # Do development environment specific seeding here.
-  user = User.new('dev@thewishlist.com', 'dev')
+  user = User.new('dev@thewishlist.com', 'TheWishList')
   user.first_name = 'WishList'
   user.last_name = 'Dev'
   user.save

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def create    
+  def create
     email = params[:session][:email]
     password = params[:session][:password]
     password_confirmation = params[:session][:password_confirmation]

@@ -3,7 +3,7 @@ require 'test_helper'
 # Unit tests for the User model
 class UserTest < ActiveSupport::TestCase
   # Reusable test parameters
-  test_email = 'testEmail'
+  test_email = 'testEmail@test.com'
   test_password = 'testPassword'
   test_first_name = 'John'
   test_last_name = 'Doe'

@@ -3,7 +3,7 @@ require 'test_helper'
 # Unit tests for the ListItem model
 class ListItemTest < ActiveSupport::TestCase
   # Reusable test parameters
-  test_email = 'testEmail'
+  test_email = 'testEmail@test.com'
   test_password = 'testPassword'
   test_list_name = 'testList'
   test_list_item_description = 'testItem'

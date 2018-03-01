@@ -1,4 +1,4 @@
- module SessionsHelper
+module SessionsHelper
   # Logs in the given user.
   def log_in(user)
     session[:user_id] = user.id
@@ -19,10 +19,9 @@
     session.delete(:user_id)
     @current_user = nil
   end
-  
+
   def calculate_hash(input)
     hash = Digest::SHA512.hexdigest(input)
-    hash = hash[0..31]
+    hash[0..31]
   end
-
-end 
+end
