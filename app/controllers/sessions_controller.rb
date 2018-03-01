@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to '/users/show'
     else
+      flash.now[:notice] = "Failed login. Make sure you entered your credentials correctly."
       render 'new'
     end
   end

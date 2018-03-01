@@ -5,6 +5,9 @@
   <h1 class="">Sign up</h1>
     <%= form_for(:session, url: signup_path) do |f| %>
 
+      <% if flash[:notice] %>
+        <div class="alert alert-danger"><strong>Error: </strong><%= flash[:notice] %></div>
+      <% end %>
       
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>

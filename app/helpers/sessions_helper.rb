@@ -19,9 +19,10 @@
     session.delete(:user_id)
     @current_user = nil
   end
-
+  
   def calculate_hash(input)
     hash = Digest::SHA512.hexdigest(input)
-    hash = hash[0..24]
+    hash = hash[0..31]
   end
+
 end 
