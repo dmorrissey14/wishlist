@@ -1,1 +1,13 @@
 <p>Authentication successful</p>
+<div class="col-md-8">
+  <% if @user.lists.any? %>
+    <h3><%= @user.first_name %> <%= @user.last_name %>'s Lists</h3>
+    <ol class="list">
+      <%= render @list %>
+    </ol>
+  <% end %>
+</div>
+
+<ul class="nav navbar-nav navbar-right">
+  <input type="button" onclick="location.href='lists/createlist';" value="Create New List" />
+</ul>

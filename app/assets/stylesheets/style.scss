@@ -1,2 +1,66 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.navbar{
+  padding-bottom:0px;
+  margin-bottom:0px;
+}
+
+/* Main color themes*/
+$main-grey-color: #EFEFEF;
+$dark-grey-text: #A9A9A9;
+$blue-contrast: #CAEBF2;
+$red-accent: #FF3B3f;
+
+/* General Formatting */
+html{
+  height: 100%
+}
+
+body{
+  height:100%;
+}
+
+/* Text/Font themes */
+.center {
+  text-align: center;
+}
+
+@font-face{
+  font-family: 'Roboto';
+  src:font-url('Roboto-Thin.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: 'Signika';
+  src:font-url('Signika-Regular.ttf') format('truetype');
+  font-weight:normal;
+  font-style:normal;
+}
+
+.robot{
+  font-family: 'Roboto', sans-serif;
+}
+
+.signika{
+  font-family: 'Signika', 'sans-serif';
+}
+
+.navbar{
+  font-family: 'Signika', sans-serif;
+}
+
+.navbar-collapse{
+  border-bottom: 1px solid $blue-contrast !important;
+}
+
+.navbar-custom{
+  color:$red-accent !important;
+  padding-left:25px;
+}
+
+.container-fluid {
+  max-width:1220px;
+}
