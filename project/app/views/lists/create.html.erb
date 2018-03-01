@@ -1,0 +1,20 @@
+<!-- app/views/home/sign_up.html.erb -->
+<div class="mainContent">
+  <div class="grid">
+    <h1 class="largeHeader">Create New List:</h1>
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:lists, url: save_path) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description, class: 'form-control' %>
+      <%= f.submit "Save List", class: "btn btn-primary" %>
+    <% end %>
+
+    </div><!-- end column 2 contact form -->
+  </div><!-- end grid -->
+</div><!-- end mainContent -->
+
+
