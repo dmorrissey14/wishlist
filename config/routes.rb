@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   post   '/login',   to: 'sessions#create' #processes login data
   
-  delete '/logout',  to: 'sessions#destroy'
+  get '/logout',  to: 'sessions#destroy'
 
   # get '/groups', to: "groups#foo"
 

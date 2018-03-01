@@ -1,24 +1,27 @@
 class UsersController < ApplicationController
   def new
-    @user = User.new_anonymous_user
   end
 
   def show
-   @user = User.find(1)
-   @list = @user.lists
-   # @user = User.find(params[:id])
+    if logged_in?
+      @user = current_user
+    else
+      redirect_to '/login'
+    end
   end
 
-  def create
-    hashed_password = calculate_hash(params[:session][:password])
-    hashed_email = calculate_hash(params[:session][:email])
+  def create    
+    email = params[:session][:email]
+    password = params[:session][:password]
+    password_confirmation = params[:session][:password_confirmation]
 
-    @user = User.new(hashed_email, hashed_password)
-    if @user.save
+    @user = User.new(email, password)
+    if @user.save && (password_confirmation == password)
       log_in @user # calls log_in method in helper
-      redirect_to @user # goes to show action for this user
+      redirect_to '/users/show' # goes to show action for this user
     else
       # failed to create user
+      flash.now[:notice] = "Could not create new user. Make sure you entered your credentials correctly and your password is at least six characters."
       render 'new' # render registration page
     end
   end

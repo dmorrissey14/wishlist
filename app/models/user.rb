@@ -5,12 +5,12 @@ class User < ApplicationRecord
 
   def email=(value)
     super(value)
-    write_attribute(:email_hash, value) # Need hash method
+    write_attribute(:email_hash, calculate_hash(value)) # Need hash method
   end
 
   def password=(value)
     super(value)
-    write_attribute(:password_hash, value) # Need hash method
+    write_attribute(:password_hash, calculate_hash(value)) # Need hash method
   end
 
   # Associations
@@ -21,7 +21,8 @@ class User < ApplicationRecord
   validates :email_hash, presence: true,
                          uniqueness: { case_sensitive: false }
   validates :password_hash, presence: true
-
+  validates :email, presence: true, length: { maximum: 31}, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :password, length: 6..20
   # Callbacks
   before_destroy :delete_owned_lists
 
@@ -31,9 +32,9 @@ class User < ApplicationRecord
   def initialize(email, password)
     super()
     @email = email
-    write_attribute(:email_hash, email) # Need hash method
+    write_attribute(:email_hash, calculate_hash(email)) # Need hash method
     @password = password
-    write_attribute(:password_hash, password) # Need hash method
+    write_attribute(:password_hash, calculate_hash(password)) # Need hash method
   end
 
   # Override of User.create to allow for the instance to be created
@@ -55,5 +56,10 @@ class User < ApplicationRecord
   # Deletes all lists owned by the user.
   def delete_owned_lists
     lists.each(&:destroy)
+  end
+
+  def calculate_hash(input)
+    hash = Digest::SHA512.hexdigest(input)
+    hash = hash[0..31]
   end
 end
