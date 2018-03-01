@@ -3,7 +3,7 @@ require 'test_helper'
 class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should redirect on successful user creation" do
     # send a post request to user/create
-    post "/signup", params: { session: { email: "tester999@test.com", password: "testpass" } }
+    post "/signup", params: { session: { email: "tester999@test.com", password: "testpass", password_confirmation: "testpass" } }
     assert_response :redirect
   end
 
