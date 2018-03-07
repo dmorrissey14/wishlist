@@ -9,8 +9,9 @@ class SessionsController < ApplicationController
 
     if user && (user[:password_hash] == hashed_password)
       log_in user
-      redirect_to user
+      redirect_to '/users/show'
     else
+      flash.now[:notice] = "Failed login. Make sure you entered your credentials correctly."
       render 'new'
     end
   end

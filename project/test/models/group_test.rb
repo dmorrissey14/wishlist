@@ -3,7 +3,7 @@ require 'test_helper'
 # Unit tests for the Group model
 class GroupTest < ActiveSupport::TestCase
   # Reusable test parameters
-  test_email = 'testEmail'
+  test_email = 'testEmail@test.com'
   test_password = 'testPassword'
   test_group_name = 'testGroup'
   test_group_description = 'testGroupDescription'

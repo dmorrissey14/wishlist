@@ -1,3 +1,35 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.list {
+    list-style: none;
+    padding: 0;
+    li {
+      padding: 10px 0;
+      border-top: 1px solid #e8e8e8;
+    }
+    .navbar-brand {
+      font-weight:bold;
+      margin-top: .2cm;
+      align-self: center;
+      
+    }
+    .description {
+      display: block;
+      margin-top: .6cm;
+      margin-right: 4cm;
+
+    }
+    .modify {
+      margin-right: .2cm;
+      margin-top: .1cm;
+    
+    }
+    .delete {
+      margin-right: .2cm;
+      margin-top: .1cm;
+
+    }
+
+  }
