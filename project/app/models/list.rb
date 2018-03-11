@@ -25,7 +25,7 @@ class List < ApplicationRecord
   # Returns whether or not the provided user can view the list.
   def viewer?(user)
     return true unless user.id != owner.id
-    viewers.users.includes(user.id)
+    viewers.users.include?(user)
   end
 
   private

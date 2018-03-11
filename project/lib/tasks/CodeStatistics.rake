@@ -10,7 +10,7 @@ namespace :spec do
     alias calculate_statistics_orig calculate_statistics
     def calculate_statistics
       @pairs.inject({}) do |stats, pair|
-        if 3 == pair.size
+        if pair.size == 3
           stats[pair.first] = calculate_directory_statistics(pair[1], pair[2]); stats
         else
           stats[pair.first] = calculate_directory_statistics(pair.last); stats
@@ -19,8 +19,8 @@ namespace :spec do
     end
   end
   ::STATS_DIRECTORIES << ['Views',  'app/views', /\.(rhtml|erb|rb)$/]
-  ::STATS_DIRECTORIES << ['Test Fixtures',  'test/fixtures', /\.yml$/]
-  ::STATS_DIRECTORIES << ['Email Fixtures',  'test/fixtures', /\.txt$/]
+  ::STATS_DIRECTORIES << ['Test Fixtures',  'spec/fixtures', /\.yml$/]
+  ::STATS_DIRECTORIES << ['Email Fixtures',  'spec/fixtures', /\.txt$/]
   # note, I renamed all my rails-generated email fixtures to add .txt
   ::STATS_DIRECTORIES << ['HTML', 'public', /\.html$/]
   ::STATS_DIRECTORIES << ['CSS',  'app/assets/stylesheets', /\.css$/]
