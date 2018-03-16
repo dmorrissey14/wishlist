@@ -7,7 +7,9 @@ describe UsersController, type: :controller do
     # send a post request to user/create
     post '/signup', params: { session: { email: 'tester999@test.com',
                                          password: 'testpass',
-                                         password_confirmation: 'testpass' } }
+                                         password_confirmation: 'testpass',
+                                         first_name: 'TestFirst',
+                                         last_name: 'TestLast' } }
     assert_response :redirect
   end
 

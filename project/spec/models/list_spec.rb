@@ -6,12 +6,16 @@ test_password = 'testPassword'
 test_password2 = 'testPassword2'
 test_list_name = 'testList'
 test_list_description = 'testDescription'
+test_first_name = 'testFirstName'
+test_first_name2 = 'testFirstName2'
+test_last_name = 'testLastName'
+test_last_name2 = 'testLastName2'
 
 # Rubocop complains about the block length, though this is RSpec convention.
 # rubocop:disable Metrics/BlockLength
 describe List, type: :model do
   before(:each) do
-    @user = User.create(test_email, test_password)
+    @user = User.create(email: test_email, password: test_password, first_name: test_first_name, last_name: test_last_name)
   end
 
   describe '#new' do
@@ -74,7 +78,7 @@ describe List, type: :model do
     it 'determines if a user is the owner of a list' do
       list = List.create(name: test_list_name, owner: @user)
       expect(List.exists?(list.id)).to be true
-      user2 = User.create(test_email2, test_password2)
+      user2 = User.create(email: test_email2, password: test_password2, first_name: test_first_name2, last_name: test_last_name2)
       expect(User.exists?(user2.id)).to be true
       expect(list.owner?(@user)).to be true
       expect(list.owner?(user2)).to be false
@@ -85,7 +89,7 @@ describe List, type: :model do
     it 'determines if a user is a viewer of a list' do
       list = List.create(name: test_list_name, owner: @user)
       expect(List.exists?(list.id)).to be true
-      user2 = User.create(test_email2, test_password2)
+      user2 = User.create(email: test_email2, password: test_password2, first_name: test_first_name2, last_name: test_last_name2)
       expect(User.exists?(user2.id)).to be true
       expect(list.viewer?(@user)).to be true
       expect(list.viewer?(user2)).to be false

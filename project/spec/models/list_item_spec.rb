@@ -5,12 +5,14 @@ test_password = 'testPassword'
 test_list_name = 'testList'
 test_description = 'testItem'
 test_list_item_comments = 'testComments'
+test_first_name = 'testFirstName'
+test_last_name = 'testLastName'
 
 # Rubocop complains about the block length, though this is RSpec convention.
 # rubocop:disable Metrics/BlockLength
 describe ListItem, type: :model do
   before(:each) do
-    @user = User.create(test_email, test_password)
+    @user = User.create(email: test_email, password: test_password, first_name: test_first_name, last_name: test_last_name)
     @list = List.create(name: test_list_name, user: @user)
   end
 

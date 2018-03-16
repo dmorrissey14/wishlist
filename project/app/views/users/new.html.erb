@@ -9,6 +9,12 @@
         <div class="alert alert-danger"><strong>Error: </strong><%= flash[:notice] %></div>
       <% end %>
       
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: 'form-control' %>
+
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: 'form-control' %>
+
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
 

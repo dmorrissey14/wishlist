@@ -14,8 +14,11 @@ class UsersController < ApplicationController
     email = params[:session][:email]
     password = params[:session][:password]
     password_confirmation = params[:session][:password_confirmation]
+    first_name = params[:session][:first_name]
+    last_name = params[:session][:last_name]
 
-    @user = User.new(email, password)
+    @user = User.new(email: email, password: password, first_name: first_name, last_name: last_name)
+
     if @user.save && (password_confirmation == password)
       log_in @user # calls log_in method in helper
       redirect_to '/users/show' # goes to show action for this user
