@@ -7,7 +7,7 @@ class ListsController < ApplicationController
     @list = List.new( owner:      current_user,
                       name:         params[:list][:name],
                       description:  params[:list][:description])
-                      
+
     if @list.save
       flash[:success] = 'List Created!'
       redirect_to '/users/show'
@@ -17,42 +17,18 @@ class ListsController < ApplicationController
     end
   end
 
-  def list_items
-    @list = List.find(params[:id])
-    @items = @list.list_items
-  end
-
-  def create_item
-    @list = List.find(params[:list_id])
-  end
-
-  def save_item
-    item = ListItem.new
-    item.list = List.find(params[:Item][:listId])
-    item.description = params[:Item][:Description]
-    item.comments = params[:Item][:Comments]
-    item.site_link = params[:Item][:Link]
-    item.quantity = params[:Item][:Quantity]
-    item.save
-  end
-
-  def get_list
-    @list = List.find(params[:id])
-    redirect_to controller: 'lists', action: 'list_items', id: @list.id
-  end
-
-  def destroylist
+  def destroy
     list = List.find(params[:id])
     unless list.nil?
       list.destroy
       flash[:success] = 'List Deleted'
+      redirect_to '/users/show'
     end
   end
 
-  def destroyitem
-    item = ListItem.find(params[:id])
-    item.destroy
-    flash[:success] = 'List Item Deleted'
-    @list = List.find(params[:list_id])
+  def view_list
+    @list = List.find(params[:id])
+    @items = @list.list_items
+    redirect_to '/list_items', @items
   end
 end

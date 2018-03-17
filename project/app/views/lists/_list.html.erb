@@ -1,16 +1,19 @@
-<div class="container-fluid">
 	<div class="row">
-		<div class="col-md-12">
-			<a class="navbar-brand" href="lists/get_list?id=<%=list.id%>"> <%= list.name %></a>
-				<div class="description" >
-              <%= list.description %>
-        </div>
-				<li class="modify">
-          <%= button_to 'Modify List', {:controller => "lists", :action => "list_items", :id => list.id}, :method=>:post %>
-				</li>
-        <li class="delete">
-          <%=  button_to 'Delete List', {:controller => "lists", :action => "destroylist", :id => list.id}, :method=>:post %>
-				</li>
+		<div class="col-md-3 list-header">
+				<h3><%= list.name %></h3>
+		</div>
+		<div class="col-md-6 list-description" >
+							<h4><%= list.description %></h4>
+		</div>
+		<div class="col-md-1">
+					<%= button_to 'Modify List', '#' %>
+		</div>
+		<div class="col-md-2">
+						<%=  button_to 'Delete List', {controller: 'lists', :id => list.id}, :method=>:delete, data: {confirm: "You sure?"} %>
 		</div>
 	</div>
-</div>
+
+<% if list.list_items.any? %>
+	<%= render list.list_items %>
+<% end %>
+

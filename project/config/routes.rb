@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   post '/signup', to: 'users#create'
 
+  get '/view_list', to: 'lists#view_list'
+
   get 'static/home'
 
   get  '/login',   to: 'sessions#new' #returns login pa 
@@ -19,5 +21,4 @@ Rails.application.routes.draw do
   resources :users
   resources :lists
   resources :list_items
-
 end
