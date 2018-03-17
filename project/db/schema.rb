@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180218204804) do
+ActiveRecord::Schema.define(version: 20180317141300) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name", limit: 100, null: false
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 20180218204804) do
   create_table "users", force: :cascade do |t|
     t.string "email_hash", limit: 32, null: false
     t.string "password_hash", limit: 32, null: false
-    t.string "first_name", limit: 32
-    t.string "last_name", limit: 32
+    t.string "first_name", limit: 32, null: false
+    t.string "last_name", limit: 32, null: false
   end
 
   add_foreign_key "groups_users", "groups"

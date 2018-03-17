@@ -4,6 +4,8 @@ test_email = 'testEmail@test.com'
 test_password = 'testPassword'
 test_group_name = 'testGroup'
 test_group_description = 'testGroupDescription'
+test_first_name = 'testFirstName'
+test_last_name = 'testLastName'
 
 # Rubocop complains about the block length, though this is RSpec convention.
 # rubocop:disable Metrics/BlockLength
@@ -63,7 +65,7 @@ describe Group, type: :model do
 
   describe '#users' do
     it 'adds user to group' do
-      user = User.create(test_email, test_password)
+      user = User.create(email: test_email, password: test_password, first_name: test_first_name, last_name: test_last_name)
       expect(User.exists?(user.id)).to be true
       group = Group.create(name: test_group_name)
       expect(Group.exists?(group.id)).to be true
@@ -71,7 +73,7 @@ describe Group, type: :model do
       expect(group.users).to include(user)
     end
     it 'removes user group goup' do
-      user = User.create(test_email, test_password)
+      user = User.create(email: test_email, password: test_password, first_name: test_first_name, last_name: test_last_name)
       expect(User.exists?(user.id)).to be true
       group = Group.create(name: test_group_name)
       expect(Group.exists?(group.id)).to be true

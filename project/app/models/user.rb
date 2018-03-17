@@ -25,34 +25,11 @@ class User < ApplicationRecord
                     length: { maximum: 31 },
                     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :password, length: 6..20
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   # Callbacks
   before_destroy :delete_owned_lists
-
-  # Performs additional initialization when creating a new instance
-  # of the User class. Required to allow for the instance to be
-  # created using content not stored in the database.
-  def initialize(email, password)
-    super()
-    @email = email
-    write_attribute(:email_hash, calculate_hash(email))
-    @password = password
-    write_attribute(:password_hash, calculate_hash(password))
-  end
-
-  # Override of User.create to allow for the instance to be created
-  # using content not stored in the database.
-  def self.create(email, password)
-    user = User.new(email, password)
-    user.save
-    user
-  end
-
-  # Creates an anonymous user instance for an unregistered user.
-  # Cannot be saved to the database as provided.
-  def self.new_anonymous_user
-    User.new('', '')
-  end
 
   private
 
