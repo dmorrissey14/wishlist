@@ -20,6 +20,6 @@ class ListItemsController < ApplicationController
     item = ListItem.find(params[:id])
     item.destroy
     flash[:success] = 'List Item Deleted'
-    @list = List.find(params[:list_id])
+    redirect_to '/users/show'
   end
 end
