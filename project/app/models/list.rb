@@ -5,6 +5,7 @@ class List < ApplicationRecord
 
   # Associations
   belongs_to :user
+  has_and_belongs_to_many :groups
   has_many :list_items, dependent: :destroy
 
   # Validations
@@ -18,7 +19,10 @@ class List < ApplicationRecord
 
   # Returns whether or not the provided user can view the list.
   def viewer?(user)
-    return true unless user.id != owner.id
-    viewers.users.include?(user)
+    return true if user.id == owner.id
+    groups.each do |g|
+      return true if g.users.include?(user)
+    end
+    false
   end
 end
