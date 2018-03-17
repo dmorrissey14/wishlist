@@ -5,14 +5,4 @@ class Group < ApplicationRecord
 
   # Validations
   validates :name, presence: true
-
-  # Callbacks
-  before_destroy :check_for_lists
-
-  private
-
-  # Returns whether or not the group is associated with an existing list.
-  def check_for_lists
-    list.nil?
-  end
 end
