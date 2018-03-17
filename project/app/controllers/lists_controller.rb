@@ -4,29 +4,16 @@ class ListsController < ApplicationController
   # before_action :correct_user,   only: :destroy
 
   def create
-    @user = User.find(1)
-
-    # write_attribute(:user_id, @user.id)
-    # write_attribute(:group_id, value)
-
-    # if @list.save
-    #   flash[:success] = "List Created!"
-    # else
-    #   @feed_items = []
-    # end
-    # render 'user/show'
-  end
-
-  def save
-    @list = List.new
-    user = User.find(1)
-    @list.user = user
-    @list.name = params[:lists][:name]
-    @list.description = params[:lists][:description]
+    @list = List.new( owner:      current_user,
+                      name:         params[:list][:name],
+                      description:  params[:list][:description])
+                      
     if @list.save
       flash[:success] = 'List Created!'
+      redirect_to '/users/show'
     else
-      @feed_items = []
+      flash.now[:notice] = 'Could not create list. Please verify it has a name and description.'
+      render 'new'
     end
   end
 

@@ -2,7 +2,6 @@
 class Group < ApplicationRecord
   # Associations
   has_and_belongs_to_many :users
-  has_one :list # Only have one if the group contains viewers for a list.
 
   # Validations
   validates :name, presence: true

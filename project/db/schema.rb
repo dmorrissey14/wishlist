@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180317141300) do
+ActiveRecord::Schema.define(version: 20180317153636) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name", limit: 100, null: false
@@ -38,10 +38,8 @@ ActiveRecord::Schema.define(version: 20180317141300) do
 
   create_table "lists", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "group_id", null: false
     t.string "name", limit: 100, null: false
     t.string "description", limit: 300
-    t.index ["group_id"], name: "index_lists_on_group_id"
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
@@ -55,6 +53,5 @@ ActiveRecord::Schema.define(version: 20180317141300) do
   add_foreign_key "groups_users", "groups"
   add_foreign_key "groups_users", "users"
   add_foreign_key "list_items", "lists"
-  add_foreign_key "lists", "groups"
   add_foreign_key "lists", "users"
 end
