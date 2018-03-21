@@ -1,6 +1,10 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$main-grey-color: #EFEFEF;
+$dark-grey-text: #A9A9A9;
+$blue-contrast: #CAEBF2;
+$red-accent: #FF3B3f;
 
 .list {
     list-style: none;
@@ -32,4 +36,33 @@
 
     }
 
+  }
+
+  .username{
+    padding-left:25px;
+    font-family: Roboto;
+    font-size:5em;
+  }
+  hr{
+   color: $red-accent;
+   border-bottom:solid 1px;
+   padding-left: 20px;
+  }
+  .list-header{
+    padding-left:40px;
+  }
+
+  .user-header  {
+    max-width:1220px;
+    padding-top:30px;
+    background-color:$main-grey-color;
+    min-height: 1000px;
+  }
+
+  .bg{
+    background-image: image-url("/background-gift.jpeg");
+    height: 100%; 
+    // background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
   }
