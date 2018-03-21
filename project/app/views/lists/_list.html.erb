@@ -10,7 +10,7 @@
 					<%= button_to 'Modify List', '#' %>
 		</div>
 		<div class="col-md-2">
-						<%=  button_to 'Delete List', {controller: 'lists', :id => list.id}, :method=>:delete, data: {confirm: "You sure?"} %>
+						<%=  button_to 'Delete List', {controller: 'lists', :id => list.id, action: 'destroy'}, :method=>:delete, data: {confirm: "You sure?"} %>
 		</div>
 	</div>
 	<% if list.list_items.any? %>
