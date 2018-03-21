@@ -1,6 +1,7 @@
+<div class="list-header">
 	<div class="row">
 		<div class="col-md-3">
-				<h3 class="list-header"><%= list.name %></h3>
+				<h3 class="list"><%= list.name %></h3>
 		</div>
 		<div class="col-md-6 list-description" >
 							<h4><%= list.description %></h4>
@@ -12,8 +13,11 @@
 						<%=  button_to 'Delete List', {controller: 'lists', :id => list.id}, :method=>:delete, data: {confirm: "You sure?"} %>
 		</div>
 	</div>
+	<% if list.list_items.any? %>
+		<%= render list.list_items %>
+	<% else %>
+		<p>Empty wish list</p>
+	<% end %>
+</div>
 
-<% if list.list_items.any? %>
-	<%= render list.list_items %>
-<% end %>
 
