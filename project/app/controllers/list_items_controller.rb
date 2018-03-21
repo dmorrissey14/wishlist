@@ -9,10 +9,10 @@ class ListItemsController < ApplicationController
                           quantity:     params[:list_item][:quantity])
     if @list.save
       flash[:success] = 'Item created'
-      redirect_to '/users/show'
+      redirect_to '/lists'
     else
       flash.now[:notice] = 'Could not create item. Please verify all fields filled in.'
-      render '/users/show'
+      render '/lists'
     end
   end
 
@@ -20,6 +20,6 @@ class ListItemsController < ApplicationController
     item = ListItem.find(params[:id])
     item.destroy
     flash[:success] = 'List Item Deleted'
-    redirect_to '/users/show'
+    redirect_to '/lists'
   end
 end

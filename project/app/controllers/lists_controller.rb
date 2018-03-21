@@ -22,7 +22,7 @@ class ListsController < ApplicationController
     unless list.nil?
       list.destroy
       flash[:success] = 'List Deleted'
-      redirect_to '/users/show'
+      redirect_to '/lists'
     end
   end
 
