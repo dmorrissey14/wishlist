@@ -5,10 +5,11 @@ class SessionsController < ApplicationController
   def create
     hashed_password = calculate_hash(params[:session][:password])
     hashed_email = calculate_hash(params[:session][:email])
-    user = User.find_by(email_hash: hashed_email)
 
+    user = User.find_by(email_hash: hashed_email)
     if user && (user[:password_hash] == hashed_password)
       log_in user
+      remember user
       redirect_to '/users/show'
     else
       flash.now[:notice] = "Failed login. Make sure you entered your credentials correctly."

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180317141300) do
+ActiveRecord::Schema.define(version: 20180322150431) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name", limit: 100, null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20180317141300) do
     t.string "password_hash", limit: 32, null: false
     t.string "first_name", limit: 32, null: false
     t.string "last_name", limit: 32, null: false
+    t.string "remember_digest"
   end
 
   add_foreign_key "groups_users", "groups"
