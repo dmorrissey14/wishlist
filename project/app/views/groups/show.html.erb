@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10 list-shell">
+      <% if @user.groups.any? %>
+        <h3><%= @user.first_name %> <%= @user.last_name %>'s Groups</h3>
+        <ol class="list">
+          <%= render @user.groups %>
+        </ol>
+      <% end %>
+    </div>
+    <div class="col-md-2 list-options">
+      <ul class>
+        <a class="new-list" href="/groups/new">Create New group</a>
+      </ul>
+    </div>
+  </div>
+</div>

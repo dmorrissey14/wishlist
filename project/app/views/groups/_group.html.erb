@@ -1,0 +1,21 @@
+	<div class="row">
+		<div class="col-md-3">
+				<h3 class="list-header"><%= group.name %></h3>
+		</div>
+		<div class="col-md-6 list-description" >
+							<h4><%= group.description %></h4>
+		</div>
+		<div class="col-md-1">
+					<%= button_to 'Modify Group', '#' %>
+		</div>
+		<div class="col-md-2">
+						<%=  button_to 'Delete Group', {controller: 'groups', :id => group.id}, :method=>:delete, data: {confirm: "You sure?"} %>
+		</div>
+	</div>
+
+<% @group.users.each do |g| %>
+  <h2><%= g.first_name %> </h2>
+<% end %>
+<%# if group.users.any? %>
+	<%#= render group.users %>
+<%# end %>
