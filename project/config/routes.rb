@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   get '/logout',  to: 'sessions#destroy'
 
+  get '/groups/', to: 'groups#show'
+
   resources :users
   resources :lists
   resources :list_items

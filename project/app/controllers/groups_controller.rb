@@ -29,6 +29,6 @@ class GroupsController < ApplicationController
     else
       redirect_to '/login'
     end
-    @group = Group.find(params[:id])
+    # @group = Group.find(params[:id])
   end
 end
