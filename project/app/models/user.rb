@@ -22,10 +22,13 @@ class User < ApplicationRecord
   validates :email_hash, presence: true,
                          uniqueness: { case_sensitive: false }
   validates :password_hash, presence: true
-  validates :email, presence: true,
-                    length: { maximum: 31 },
-                    format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
-  validates :password, length: 6..20
+  validates :email,
+            presence: true,
+            length: { maximum: 31 },
+            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :password,
+            presence: true,
+            format: { with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{8,}\z/ }
   validates :first_name, presence: true
   validates :last_name, presence: true
 
