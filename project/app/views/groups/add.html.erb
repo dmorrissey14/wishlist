@@ -1,0 +1,21 @@
+<!-- app/views/home/sign_up.html.erb -->
+<div class="mainContent">
+  <div class="grid">
+    <h1 class="largeHeader">Create New Group:</h1>
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(Group.find(params[:id])) do |f| %>
+
+      <%= f.label :id %>
+      <%= f.text_field :id, class: 'form-control' %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description, class: 'form-control' %>
+
+      <%= f.submit "Add User", class: "btn btn-primary" %>
+    <% end %>
+
+    </div><!-- end column 2 contact form -->
+  </div><!-- end grid -->
+</div><!-- end mainContent -->
+
+

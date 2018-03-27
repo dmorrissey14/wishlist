@@ -6,7 +6,7 @@
 							<h4><%= group.description %></h4>
 		</div>
 		<div class="col-md-1">
-					<%= button_to 'Modify Group', '#' %>
+					<%= button_to 'Modify Group', {action: 'add', :id => group.id}, :method=>:post, data: {confirm: "You sure?"} %>
 		</div>
 		<div class="col-md-2">
 						<%=  button_to 'Delete Group', {controller: 'groups', :id => group.id}, :method=>:delete, data: {confirm: "You sure?"} %>
