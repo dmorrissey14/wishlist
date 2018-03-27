@@ -5,7 +5,7 @@ module SessionsHelper
   end
 
   def remember(user)
-    user.remember_token
+    user.remember
     cookies.permanent.signed[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
   end
@@ -32,10 +32,5 @@ module SessionsHelper
   def log_out
     session.delete(:user_id)
     @current_user = nil
-  end
-
-  def calculate_hash(input)
-    hash = Digest::SHA512.hexdigest(input)
-    hash[0..31]
   end
 end

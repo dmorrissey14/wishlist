@@ -6,12 +6,12 @@ class User < ApplicationRecord
 
   def email=(value)
     @email = value
-    write_attribute(:email_hash, calculate_hash(value))
+    write_attribute(:email_hash, User.digest(value))
   end
 
   def password=(value)
     @password = value
-    write_attribute(:password_hash, calculate_hash(value))
+    write_attribute(:password_hash, User.digest(value))
   end
 
   # Associations
@@ -32,22 +32,10 @@ class User < ApplicationRecord
   # Callbacks
   before_destroy :delete_owned_lists
 
-  private
-
-  # Deletes all lists owned by the user.
-  def delete_owned_lists
-    lists.each(&:destroy)
-  end
-
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
-  end
-
-  def calculate_hash(input)
-    hash = Digest::SHA512.hexdigest(input)
-    hash[0..31]
   end
 
   def User.new_token
@@ -62,4 +50,12 @@ class User < ApplicationRecord
   def authenticated?(remember_token)
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
+
+  private
+
+  # Deletes all lists owned by the user.
+  def delete_owned_lists
+    lists.each(&:destroy)
+  end
+
 end

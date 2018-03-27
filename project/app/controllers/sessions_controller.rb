@@ -3,8 +3,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    hashed_password = calculate_hash(params[:session][:password])
-    hashed_email = calculate_hash(params[:session][:email])
+    hashed_password = User.digest(params[:session][:password])
+    hashed_email = User.digest(params[:session][:email])
 
     user = User.find_by(email_hash: hashed_email)
     if user && (user[:password_hash] == hashed_password)
