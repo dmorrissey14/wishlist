@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :confirm_logged_in, only: [:new, :create]
+  
   def new
   end
 
