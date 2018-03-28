@@ -32,9 +32,11 @@ class GroupsController < ApplicationController
     end
   end
 
-  def add
-    group = Group.find(params[:id])
-    # user = User.find(params[:user_id])
-    # group.users.push(user)
+  def update
+    group = Group.find(params[:group][:id])
+    user = User.find(params[:group][:user_id])
+    group.users.push(user)
+    group.save
+    redirect_to '/groups'
   end
 end
