@@ -5,3 +5,4 @@ testuser:
   first_name: Test
   last_name: User
   session_token_hash: NULL
+  

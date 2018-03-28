@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     hashed_password = User.digest(params[:session][:password])
     hashed_email = User.digest(params[:session][:email])
-
+    
     email = params[:session][:email]
     password = params[:session][:password]
 
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
     if match
       log_in @user
       remember @user
-      redirect_to '/users/show'
+      redirect_to '/lists'
     else
       flash.now[:notice] = "Failed login. Make sure you entered your credentials correctly."
       render 'new'

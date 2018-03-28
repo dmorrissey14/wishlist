@@ -12,7 +12,8 @@ test_last_name = 'testLastName'
 # rubocop:disable Metrics/BlockLength
 describe ListItem, type: :model do
   before(:each) do
-    @user = User.create(email: test_email, password: test_password, first_name: test_first_name, last_name: test_last_name)
+    @user = User.create(email: test_email, password: test_password,
+                        first_name: test_first_name, last_name: test_last_name)
     @list = List.create(name: test_list_name, user: @user)
   end
 

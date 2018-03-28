@@ -4,6 +4,7 @@ test_email = 'testEmail@test.com'
 test_email2 = 'updatedtestEmail@test.com'
 test_password = 'testPassword'
 test_password2 = 'testPassword2'
+test_group_name = 'testGroup'
 test_list_name = 'testList'
 test_list_description = 'testDescription'
 test_first_name = 'testFirstName'
@@ -15,7 +16,8 @@ test_last_name2 = 'testLastName2'
 # rubocop:disable Metrics/BlockLength
 describe List, type: :model do
   before(:each) do
-    @user = User.create(email: test_email, password: test_password, first_name: test_first_name, last_name: test_last_name)
+    @user = User.create(email: test_email, password: test_password,
+                        first_name: test_first_name, last_name: test_last_name)
   end
 
   describe '#new' do
@@ -89,11 +91,14 @@ describe List, type: :model do
     it 'determines if a user is a viewer of a list' do
       list = List.create(name: test_list_name, owner: @user)
       expect(List.exists?(list.id)).to be true
+      group = Group.create(name: test_group_name)
+      list.groups.push(group)
+      expect(list.groups).to include(group)
       user2 = User.create(email: test_email2, password: test_password2, first_name: test_first_name2, last_name: test_last_name2)
       expect(User.exists?(user2.id)).to be true
       expect(list.viewer?(@user)).to be true
       expect(list.viewer?(user2)).to be false
-      list.viewers.users.push(user2)
+      group.users.push(user2)
       expect(list.viewer?(user2)).to be true
     end
   end

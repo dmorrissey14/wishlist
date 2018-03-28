@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
     if @user.save && (password_confirmation == password)
       log_in @user # calls log_in method in helper
-      redirect_to '/users/show' # goes to show action for this user
+      redirect_to '/lists' # goes to show action for this user
     else
       # failed to create user
       flash.now[:notice] = "Could not create new user. Make sure you entered your credentials correctly and your password is at least eight characters including upper case, lower case, and numbers."

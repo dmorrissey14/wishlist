@@ -57,6 +57,10 @@ class User < ApplicationRecord
 
   def forget
     update_attribute(:session_token_hash, nil)
+    
+  # Returns the full name of the user.
+  def full_name
+    first_name + ' ' + last_name
   end
 
   private

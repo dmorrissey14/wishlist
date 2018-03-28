@@ -72,7 +72,7 @@ describe Group, type: :model do
       group.users.push(user)
       expect(group.users).to include(user)
     end
-    it 'removes user group goup' do
+    it 'removes user from group' do
       user = User.create(email: test_email, password: test_password, first_name: test_first_name, last_name: test_last_name)
       expect(User.exists?(user.id)).to be true
       group = Group.create(name: test_group_name)
