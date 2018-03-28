@@ -54,6 +54,10 @@ class User < ApplicationRecord
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
 
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
+
   private
 
   # Deletes all lists owned by the user.

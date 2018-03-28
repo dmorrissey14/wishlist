@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       redirect_to '/users/show' # goes to show action for this user
     else
       # failed to create user
-      flash.now[:notice] = "Could not create new user. Make sure you entered your credentials correctly and your password is at least six characters."
+      flash.now[:notice] = "Could not create new user. Make sure you entered your credentials correctly and your password is at least eight characters including upper case, lower case, and numbers."
       render 'new' # render registration page
     end
   end
