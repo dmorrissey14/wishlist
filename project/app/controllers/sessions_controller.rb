@@ -8,10 +8,21 @@ class SessionsController < ApplicationController
     hashed_password = User.digest(params[:session][:password])
     hashed_email = User.digest(params[:session][:email])
 
-    user = User.find_by(email_hash: hashed_email)
-    if user && (user[:password_hash] == hashed_password)
-      log_in user
-      remember user
+    email = params[:session][:email]
+    password = params[:session][:password]
+
+    User.find_each do |record|
+      if BCrypt::Password.new(record[:email_hash]).is_password?(email)
+        @user = record
+      end
+    end
+
+    match = false
+    match = BCrypt::Password.new(@user[:password_hash]).is_password?(password)
+
+    if match
+      log_in @user
+      remember @user
       redirect_to '/users/show'
     else
       flash.now[:notice] = "Failed login. Make sure you entered your credentials correctly."

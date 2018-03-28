@@ -1,6 +1,7 @@
 testuser:
   id: 1
-  email_hash: 2965ff80096683eb893827bdf0c3b054 #test65@test.com
-  password_hash: 78ddc8555bb1677ff5af75ba5fc02cb3 #testpass
-  first_name: NULL
-  last_name: NULL
+  email_hash: $2a$10$1pOSUoeD6kcl3WbtVCjkzuSqWSS8XmKsjQdosaldVhMCD7SwTfR2K
+  password_hash: $2a$10$CeY1gfV0WiGX02eYsTxJ7.9u/3PyM9HfWAgzhBOnrzmH.76bUDlJ.
+  first_name: Test
+  last_name: User
+  session_token_hash: NULL

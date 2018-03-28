@@ -2,7 +2,7 @@ require 'rails_helper'
 
 test_email = 'testEmail@test.com'
 test_email2 = 'updatedtestEmail@test.com'
-test_password = 'testPassword'
+test_password = 'testPassword1'
 test_password2 = 'testPassword2'
 test_first_name = 'John'
 test_last_name = 'Doe'
@@ -79,14 +79,14 @@ describe User, type: :model do
       expect(User.exists?(user.id)).to be true
       user.update(email: test_email2)
       expect(user.email).to eq(test_email2)
-      expect(user.email_hash).to eq(calculate_hash(test_email2))
+      expect(BCrypt::Password.new(user[:password_hash]).is_password?(test_password)).to be true
     end
     it 'password can be updated' do
       user = User.create(email: test_email, password: test_password, first_name: test_first_name, last_name: test_last_name)
       expect(User.exists?(user.id)).to be true
       user.update(password: test_password2)
       expect(user.password).to eq(test_password2)
-      expect(user.password_hash).to eq(calculate_hash(test_password2))
+      expect(BCrypt::Password.new(user[:password_hash]).is_password?(test_password2)).to be true
     end
   end
 
