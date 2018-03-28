@@ -6,12 +6,19 @@ class ListItemsController < ApplicationController
                           comments:     params[:List_Item][:Comments],
                           site_link:    params[:List_Item][:Link],
                           quantity:     params[:List_Item][:Quantity])
-    if @item.save
-      flash[:success] = 'Item created'
-      redirect_to '/lists'
-    else
-      flash.now[:notice] = 'Could not create item. Please verify all fields filled in.'
-      render '/lists'
+    begin
+      Integer(params[:List_Item][:Quantity])
+      if @item.save
+        flash[:success] = 'Item created'
+        redirect_to '/lists'
+      else
+        flash.now[:notice] = 'Could not create item. Please verify all fields filled in.'
+        render '/lists'
+      end
+    rescue
+      flash.now[:notice] = 'Could not create item. Please verify all fields filled in correctly.'
+      redirect_to request.referrer, notice: "Could not create item. Please verify all fields filled in correctly."
+      @item.destroy
     end
   end
 
