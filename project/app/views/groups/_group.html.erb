@@ -1,9 +1,15 @@
 	<div class="row">
 		<div class="col-md-3">
-				<h3 class="list-header"><%= group.name %></h3>
+				<h1 class="list-header"><%= group.name %></h3>
 		</div>
 		<div class="col-md-6 list-description" >
 							<h4><%= group.description %></h4>
+		</div>
+		<div class="col-md-6">
+			<h2>Members</h2>
+			<% group.users.each do |g| %>
+				<h4><%= g.first_name %> </h4>
+			<% end %>
 		</div>
 		<div class="col-md-2">
 						<%=  button_to 'Delete Group', {controller: 'groups', :id => group.id}, :method=>:delete, data: {confirm: "You sure?"} %>
@@ -15,11 +21,8 @@
   			<%= f.submit "Add User"%>
 		<% end %> 
 		</div>
-	</div>
 
-<% group.users.each do |g| %>
-  <h2><%= g.first_name %> </h2>
-<% end %>
+	</div>
 
 <%# if group.users.any? %>
 	<%#= render group.users %>
