@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180317141300) do
+ActiveRecord::Schema.define(version: 20180317202901) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name", limit: 100, null: false
     t.string "description", limit: 300
+  end
+
+  create_table "groups_lists", id: false, force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.bigint "list_id", null: false
+    t.index ["group_id", "list_id"], name: "index_groups_lists_on_group_id_and_list_id"
+    t.index ["group_id"], name: "index_groups_lists_on_group_id"
+    t.index ["list_id", "group_id"], name: "index_groups_lists_on_list_id_and_group_id"
+    t.index ["list_id"], name: "index_groups_lists_on_list_id"
   end
 
   create_table "groups_users", id: false, force: :cascade do |t|
@@ -38,10 +47,8 @@ ActiveRecord::Schema.define(version: 20180317141300) do
 
   create_table "lists", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "group_id", null: false
     t.string "name", limit: 100, null: false
     t.string "description", limit: 300
-    t.index ["group_id"], name: "index_lists_on_group_id"
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
@@ -52,9 +59,10 @@ ActiveRecord::Schema.define(version: 20180317141300) do
     t.string "last_name", limit: 32, null: false
   end
 
+  add_foreign_key "groups_lists", "groups"
+  add_foreign_key "groups_lists", "lists"
   add_foreign_key "groups_users", "groups"
   add_foreign_key "groups_users", "users"
   add_foreign_key "list_items", "lists"
-  add_foreign_key "lists", "groups"
   add_foreign_key "lists", "users"
 end

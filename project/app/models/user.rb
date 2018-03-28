@@ -31,6 +31,11 @@ class User < ApplicationRecord
   # Callbacks
   before_destroy :delete_owned_lists
 
+  # Returns the full name of the user.
+  def full_name
+    first_name + ' ' + last_name
+  end
+
   private
 
   # Deletes all lists owned by the user.

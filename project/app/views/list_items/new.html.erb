@@ -3,7 +3,7 @@
   <div class="grid">
     <h1 class="largeHeader">Create New Item:</h1>
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:Item, url: saveitem_path) do |f| %>
+    <%= form_for(:List_Item, url: {action: :create}) do |f| %>
       
       <%= f.label :Description %>
       <%= f.text_field :Description, class: 'form-control' %>
@@ -17,7 +17,7 @@
       <%= f.label :Quantity %>
       <%= f.text_field :Quantity, class: 'form-control' %>
 
-      <%= f.hidden_field :listId, value: @list.id %>
+      <%= f.hidden_field :list_id, value: @list.id %>
 
       
       <%= f.submit "Save Item", class: "btn btn-primary" %>
