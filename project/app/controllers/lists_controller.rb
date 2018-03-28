@@ -4,7 +4,7 @@ class ListsController < ApplicationController
   # before_action :correct_user,   only: :destroy
 
   def create
-    @list = List.new( owner:      current_user,
+    @list = List.new( owner:        current_user,
                       name:         params[:list][:name],
                       description:  params[:list][:description])
 
@@ -22,7 +22,7 @@ class ListsController < ApplicationController
     unless list.nil?
       list.destroy
       flash[:success] = 'List Deleted'
-      redirect_to '/users/show'
+      redirect_to '/lists'
     end
   end
 

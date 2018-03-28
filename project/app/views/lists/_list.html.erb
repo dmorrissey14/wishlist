@@ -1,19 +1,21 @@
+<div class="list-header">
 	<div class="row">
 		<div class="col-md-3">
-				<h3 class="list-header"><%= list.name %></h3>
+				<h3 class="list list-name"><%= list.name %></h3>
 		</div>
 		<div class="col-md-6 list-description" >
 							<h4><%= list.description %></h4>
 		</div>
 		<div class="col-md-1">
-					<%= button_to 'Modify List', '#' %>
+				<%= button_to  "Add Item", {controller: 'list_items', id: list.id, action: 'new'}, {method: :post, class: "btn btn-small" } %>
 		</div>
-		<div class="col-md-2">
-						<%=  button_to 'Delete List', {controller: 'lists', :id => list.id}, :method=>:delete, data: {confirm: "You sure?"} %>
+		<div class="col-md-1">
+				<%= button_to 'Delete List', {controller: 'lists', id: list.id, action: 'destroy'}, {:method=>:delete, class: "btn btn-small", data: {confirm: "You sure?"}} %>
 		</div>
 	</div>
-
-<% if list.list_items.any? %>
-	<%= render list.list_items %>
-<% end %>
-
+	<% if list.list_items.any? %>
+		<%= render list.list_items %>
+	<% else %>
+		<p>Empty wish list</p>
+	<% end %>
+</div>

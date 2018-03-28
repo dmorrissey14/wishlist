@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   get '/groups', to: 'groups#show'
   delete '/groups', to: 'groups#destroy'
+  
+  post 'list_items/new', to: 'list_items#new'
 
   resources :users
   resources :lists

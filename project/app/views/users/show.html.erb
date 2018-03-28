@@ -1,17 +1,20 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-10 list-shell">
-      <% if @user.lists.any? %>
-        <h3><%= @user.first_name %> <%= @user.last_name %>'s Lists</h3>
-        <ol class="list">
-          <%= render @user.lists %>
-        </ol>
-      <% end %>
-    </div>
-    <div class="col-md-2 list-options">
-      <ul class>
-        <a class="new-list" href="/lists/new">Create New List</a>
-      </ul>
+<div class="bg">
+  <div class="user-header container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+          <h3 class="username"><%= @user.first_name %> <%= @user.last_name %>'s Lists</h3>
+          <hr>
+      </div>
+      <div class="col-md-10 list-shell">
+        <% if @user.lists.any? %>
+            <%= render @user.lists %>
+        <% end %>
+      </div>
+      <div class="col-md-2 list-options">
+        <ul class>
+          <a class="new-list btn btn-primary" href="/lists/new">Create New List</a>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

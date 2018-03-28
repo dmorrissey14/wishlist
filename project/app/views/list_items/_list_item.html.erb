@@ -1,39 +1,37 @@
-<div class="row list-item item-hide list<%= list_item.list_id%>">
-    <div class="col-md-12">
-          <p style="float:right;">
+<div class="row list-item item-hide">
+  <div class="col-md-12">
+        <p style="float:right;">
+          <% unless list_item.site_link.blank? %>
             <div class="thumbnail">
-              <% unless list_item.site_link.blank? %>
                 <!-- This requires that the site_link property is set to an image URL, rather than a page. -->
                   <img alt="Bootstrap Thumbnail Second" src= "<%= list_item.site_link %>" />
-              <% end %>
             </div>
-            <div class="caption">
+          <% end %>
+      </p>
+      <div class="caption">
+        <p style="float:right;">
+          <h3>
+            <%= list_item.description %>
+          </h3>
+          <p>
+            <%= list_item.comments %>
           </p>
-          <p style="float:right;">
-            <h3>
-              <%= list_item.description %>
-            </h3>
-            <p>
-              <%= list_item.comments %>
-            </p>
-            <p>
-              Quantity: <%= list_item.quantity %>
-            </p>
-            <p>
-            <% if list_item.purchased? %>
-              Purchased: Yes
-            <% else %>
-              Purchased: No
-            <% end %>
-            </p>
-            <p>
-              <a class="btn btn-primary" href="#">Modify</a> 
-              <%= button_to  "Delete",  {controller: 'list_items', :action => 'destroy', id: list_item.id}, 
-                                        {:method => :delete, :confirm => 'Are you sure?', :remote => true, class: "btn btn-primary"} %>
-            </p>
+          <p>
+            Quantity: <%= list_item.quantity %>
           </p>
-                
-        </div>
-    </div>
+          <p>
+          <% if list_item.purchased? && viewable?(list_item) %>
+            Purchased: Yes
+          <% else %>
+            Purchased: No
+          <% end %>
+          </p>
+          <p>
+            <%= button_to  "Delete",  {controller: 'list_items', :action => 'destroy', id: list_item.id}, 
+                                      {:method => :delete, :confirm => 'Are you sure?', :remote => true, class: "btn btn-primary"} %>
+          </p>
+        </p>
+              
+      </div>
   </div>
-  <hr>
+</div>

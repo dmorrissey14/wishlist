@@ -24,7 +24,11 @@
   </div>
   <div class="row">
     <div class="col-lg-12">
-      <%= button_to "Get Started", {action: "home"}, {form_class: 'button-form', class: 'btn btn-small start-button center-block signika'} %>
+        <% if !logged_in? %>
+          <%= button_to "Get Started", {controller: "sessions", action:"new"}, {form_class: 'button-form', class: 'btn btn-small start-button center-block signika', method: :get} %>
+        <% else %>
+          <%= button_to "Get Started", {controller: "users", action: "show"}, {form_class: 'button-form', class: 'btn btn-small start-button center-block signika', method: :get} %>
+        <% end %>
     </div>
   </div>
 </div>
