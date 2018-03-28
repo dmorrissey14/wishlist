@@ -24,7 +24,7 @@
 		<div class="col-md-6">
 			<h2>Lists</h2>
 			<% group.lists.each do |g| %>
-				<h4><%= link_to g.name, '/view_list', g.id %> </h4>
+				<h4><%= link_to g.name, list_path(g) %> </h4>
 			<% end %>
 		</div>
 		<div class="col-md-3">

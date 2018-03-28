@@ -31,4 +31,8 @@ class ListsController < ApplicationController
     @items = @list.list_items
     redirect_to '/list_items', @items
   end
+
+  def show
+    @list = List.find(params[:id])
+  end
 end
