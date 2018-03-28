@@ -35,8 +35,13 @@ class GroupsController < ApplicationController
   # Need to do some error checks here, just trying to get functionality
   def update
     group = Group.find(params[:group][:id])
-    user = User.find(params[:group][:user_id])
-    group.users.push(user)
+    if params[:group][:user_id].nil?
+      list = List.find(params[:group][:list_id])
+      group.lists.push(list)
+    else 
+      user = User.find(params[:group][:user_id])
+      group.users.push(user)
+    end
     group.save
     redirect_to '/groups'
   end

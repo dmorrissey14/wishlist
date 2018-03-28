@@ -21,7 +21,19 @@
   			<%= f.submit "Add User"%>
 		<% end %> 
 		</div>
-
+		<div class="col-md-6">
+			<h2>Lists</h2>
+			<% group.lists.each do |g| %>
+				<h4><%= g.name %> </h4>
+			<% end %>
+		</div>
+		<div class="col-md-3">
+			<%= form_for group do |f| %>
+				<%= f.text_field :list_id%>
+				<%= f.hidden_field :id %>
+  			<%= f.submit "Add List"%>
+		<% end %> 
+		</div>
 	</div>
 
 <%# if group.users.any? %>
