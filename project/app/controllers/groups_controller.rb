@@ -36,7 +36,7 @@ class GroupsController < ApplicationController
   def update
     group = Group.find(params[:group][:id])
     if params[:group][:user_id].nil?
-      list = List.find(params[:group][:list_id])
+      list = List.find(params[:list][:id])
       group.lists.push(list)
     else 
       user = User.find(params[:group][:user_id])
