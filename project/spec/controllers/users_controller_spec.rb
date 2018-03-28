@@ -6,8 +6,8 @@ describe UsersController, type: :controller do
   it 'should redirect on successful user creation' do
     # send a post request to user/create
     post '/signup', params: { session: { email: 'tester999@test.com',
-                                         password: 'testpass',
-                                         password_confirmation: 'testpass',
+                                         password: 'T3stpass',
+                                         password_confirmation: 'T3stpass',
                                          first_name: 'TestFirst',
                                          last_name: 'TestLast' } }
     assert_response :redirect

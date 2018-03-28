@@ -14,7 +14,6 @@ describe SessionsHelper, type: :helper do
     log_out
     expect(logged_in?).to be false
 
-    hashed_pw = calculate_hash('testpass')
-    expect(@user[:password_hash]).to eq(hashed_pw)
+    expect(BCrypt::Password.new(@user[:password_hash]).is_password?('T3stpass')).to be true
   end
 end
