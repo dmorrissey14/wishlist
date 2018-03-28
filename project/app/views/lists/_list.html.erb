@@ -6,8 +6,11 @@
 		<div class="col-md-6 list-description" >
 							<h4><%= list.description %></h4>
 		</div>
-		<div class="col-md-2">
-						<%=  button_to 'Delete List', {controller: 'lists', :id => list.id, action: 'destroy'}, :method=>:delete, data: {confirm: "You sure?"} %>
+		<div class="col-md-1">
+				<%= button_to  "Add Item", {controller: 'list_items', id: list.id, action: 'new'}, {method: :post, class: "btn btn-small" } %>
+		</div>
+		<div class="col-md-1">
+				<%= button_to 'Delete List', {controller: 'lists', id: list.id, action: 'destroy'}, {:method=>:delete, class: "btn btn-small", data: {confirm: "You sure?"}} %>
 		</div>
 	</div>
 	<% if list.list_items.any? %>
@@ -16,5 +19,3 @@
 		<p>Empty wish list</p>
 	<% end %>
 </div>
-
-
