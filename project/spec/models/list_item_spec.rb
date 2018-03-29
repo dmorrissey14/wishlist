@@ -8,10 +8,8 @@ test_list_item_comments = 'testComments'
 test_first_name = 'testFirstName'
 test_last_name = 'testLastName'
 
-# Rubocop complains about the block length, though this is RSpec convention.
-# rubocop:disable Metrics/BlockLength
 describe ListItem, type: :model do
-  before(:each) do
+  before do
     @user = User.create(email: test_email, password: test_password,
                         first_name: test_first_name, last_name: test_last_name)
     @list = List.create(name: test_list_name, user: @user)
@@ -20,7 +18,7 @@ describe ListItem, type: :model do
   describe '#new' do
     it 'instantiates a ListItem object' do
       item = ListItem.new
-      expect(item).to be_instance_of ListItem
+      expect(item).instance_of? ListItem
       expect(item.valid?).to be false
       item.description = test_description
       item.list = @list
@@ -33,7 +31,7 @@ describe ListItem, type: :model do
   describe '#create' do
     it 'instantiates and stores a ListItem object' do
       item = ListItem.create(description: test_description, list: @list)
-      expect(item).to be_instance_of ListItem
+      expect(item).instance_of? ListItem
       expect(ListItem.exists?(item.id)).to be true
     end
   end
@@ -77,4 +75,3 @@ describe ListItem, type: :model do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

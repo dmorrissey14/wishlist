@@ -1,6 +1,5 @@
 # This is the configuration used to check the rubocop source code.
 
-inherit_from: .rubocop_todo.yml
 require:
   - rubocop/cop/internal_affairs
   - rubocop-rspec
@@ -19,10 +18,8 @@ Naming/PredicateName:
     - define_singleton_method
     - def_node_matcher
     - def_node_search
-
 Style/FrozenStringLiteralComment:
-  EnforcedStyle: always
-
+  EnforcedStyle: never
 Style/FormatStringToken:
   # Because we parse a lot of source codes from strings. Percent arrays
   # look like unannotated format string tokens to this cop.
@@ -67,11 +64,18 @@ Lint/UselessAccessModifier:
 Lint/BooleanSymbol:
   Enabled: false
 
+Metrics/AbcSize:
+  Max: 25
+
 Metrics/BlockLength:
   Exclude:
     - 'Rakefile'
     - '**/*.rake'
     - 'spec/**/*.rb'
+
+
+Metrics/MethodLength:
+  Max: 25
 
 Metrics/ModuleLength:
   Exclude:
@@ -80,6 +84,13 @@ Metrics/ModuleLength:
 Performance/Caller:
   Exclude:
     - spec/rubocop/cop/performance/caller_spec.rb
+
+RSpec/ExampleLength:
+  Max: 25
+
+RSpec/InstanceVariable:
+  Exclude:
+    - 'spec/**/*.rb'
 
 RSpec/PredicateMatcher:
   EnforcedStyle: explicit

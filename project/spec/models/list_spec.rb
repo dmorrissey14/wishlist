@@ -12,10 +12,8 @@ test_first_name2 = 'testFirstName2'
 test_last_name = 'testLastName'
 test_last_name2 = 'testLastName2'
 
-# Rubocop complains about the block length, though this is RSpec convention.
-# rubocop:disable Metrics/BlockLength
 describe List, type: :model do
-  before(:each) do
+  before do
     @user = User.create(email: test_email, password: test_password,
                         first_name: test_first_name, last_name: test_last_name)
   end
@@ -23,7 +21,7 @@ describe List, type: :model do
   describe '#new' do
     it 'instantiates a List object' do
       list = List.new
-      expect(list).to be_instance_of List
+      expect(list).instance_of? List
     end
     it 'requires validation' do
       list = List.new
@@ -44,7 +42,7 @@ describe List, type: :model do
   describe '#create' do
     it 'instantiates and stores a List object' do
       list = List.create(name: test_list_name, owner: @user)
-      expect(list).to be_instance_of List
+      expect(list).instance_of? List
       expect(List.exists?(list.id)).to be true
     end
   end
@@ -103,4 +101,3 @@ describe List, type: :model do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

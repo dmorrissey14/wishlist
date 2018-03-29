@@ -10,9 +10,6 @@ test_group_name = 'testGroup'
 test_first_name2 = 'testFirstName2'
 test_last_name2 = 'testLastName2'
 
-
-# Rubocop complains about the block length, though this is RSpec convention.
-# rubocop:disable Metrics/BlockLength
 describe User, type: :model do
   include SessionsHelper
 
@@ -20,12 +17,12 @@ describe User, type: :model do
     it 'takes email and password unhashed' do
       user = User.new(email: test_email, password: test_password,
                       first_name: test_first_name, last_name: test_last_name)
-      expect(user).to be_an_instance_of User
+      expect(user).instance_of? User
     end
     it 'is valid' do
       user = User.new(email: test_email, password: test_password,
                       first_name: test_first_name, last_name: test_last_name)
-      expect(user).to be_valid
+      expect(user.valid?).to be true
     end
     it 'saves' do
       user = User.new(email: test_email, password: test_password,
@@ -44,12 +41,12 @@ describe User, type: :model do
     it 'takes email and password unhashed' do
       user = User.create(email: test_email, password: test_password,
                          first_name: test_first_name, last_name: test_last_name)
-      expect(user).to be_an_instance_of User
+      expect(user).instance_of? User
     end
     it 'is valid' do
       user = User.create(email: test_email, password: test_password,
                          first_name: test_first_name, last_name: test_last_name)
-      expect(user).to be_valid
+      expect(user.valid?).to be true
     end
     it 'is retrievable after creation' do
       user = User.create(email: test_email, password: test_password,
@@ -143,4 +140,3 @@ describe User, type: :model do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

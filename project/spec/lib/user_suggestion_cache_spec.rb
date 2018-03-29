@@ -11,22 +11,20 @@ test_password2 = 't3stPassword2'
 test_first_name2 = 'testFirstName2'
 test_last_name2 = 'testLastName2'
 
-# Rubocop complains about the block length, though this is RSpec convention.
-# rubocop:disable Metrics/BlockLength
 describe UserSuggestionCache do
-  before(:all) do
+  before do
     groups = []
     (0..10).each do |i|
       group = Group.create(name: format(test_group_name_format, index: i))
       groups.push(group)
       @start_group_index = group.id if i.zero?
     end
-    (0..100).each do |i|
+    (0..20).each do |i|
       user = User.create(email: format(test_email_format, index: i),
                          password: test_password,
                          first_name: format(test_first_name_format, index: i),
                          last_name: format(test_last_name_format, index: i))
-      groups[i % 10].users.push(user)
+      groups[i % 2].users.push(user)
       @start_user_index = user.id if i.zero?
     end
   end
@@ -34,17 +32,15 @@ describe UserSuggestionCache do
   describe '#new' do
     it 'can instantiate a new UserSuggestionCache' do
       user = User.find(@start_user_index)
-      expect(user).to be_instance_of(User)
-      cache = UserSuggestionCache.new(user)
-      expect(cache).to be_instance_of(UserSuggestionCache)
+      cache = described_class.new(user)
+      expect(cache).instance_of? described_class
     end
   end
 
   describe '#initialized?' do
     it 'can initialize' do
       user = User.find(@start_user_index)
-      expect(user).to be_instance_of(User)
-      cache = UserSuggestionCache.new(user)
+      cache = described_class.new(user)
       expect(cache.initialized?).to be true
     end
   end
@@ -52,7 +48,7 @@ describe UserSuggestionCache do
   describe '#suggest_users' do
     it 'works' do
       user = User.find(@start_user_index)
-      cache = UserSuggestionCache.new(user)
+      cache = described_class.new(user)
       group = Group.find(@start_group_index)
       cache.suggest_users('test').each do |su|
         expect(group.users).to include(su)
@@ -66,7 +62,7 @@ describe UserSuggestionCache do
   describe '#refresh' do
     it 'refreshes the cache contents' do
       user = User.find(@start_user_index)
-      cache = UserSuggestionCache.new(user)
+      cache = described_class.new(user)
       group = Group.find(@start_group_index)
       cache.suggest_users('test').each do |su|
         expect(group.users).to include(su)
@@ -85,4 +81,3 @@ describe UserSuggestionCache do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

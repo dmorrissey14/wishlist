@@ -9,7 +9,8 @@ class GroupsController < ApplicationController
       @group.users.push(User.find(current_user.id))
       redirect_to '/groups'
     else
-      flash.now[:notice] = 'Could not create group. Please verify it has a name.'
+      flash.now[:notice] = 'Could not create group.'\
+                           ' Please verify it has a name.'
       render 'new'
     end
   end

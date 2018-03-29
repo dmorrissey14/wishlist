@@ -25,6 +25,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use Rubocop for static code analysis
 gem 'rubocop', '>= 0.52.1'
+gem 'rubocop-rspec'
 
 # Use Tiny TDS for database access for Active Record
 gem 'tiny_tds', '2.1.1'
