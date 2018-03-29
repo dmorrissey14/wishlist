@@ -1,3 +1,4 @@
+# Base class from which all controllers inherit.
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
@@ -7,9 +8,6 @@ class ApplicationController < ActionController::Base
   private
 
   def confirm_logged_in
-    unless logged_in?
-      redirect_to('/users/new')
-    end
+    redirect_to('/users/new') unless logged_in?
   end
-
 end

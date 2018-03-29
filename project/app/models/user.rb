@@ -35,13 +35,16 @@ class User < ApplicationRecord
   # Callbacks
   before_destroy :delete_owned_lists
 
-  def User.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
+  def self.digest(string)
+    cost = if ActiveModel::SecurePassword.min_cost
+             BCrypt::Engine::MIN_COST
+           else
+             BCrypt::Engine.cost
+           end
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def User.new_token
+  def self.new_token
     SecureRandom.urlsafe_base64
   end
 
@@ -58,7 +61,7 @@ class User < ApplicationRecord
   def forget
     update_attribute(:session_token_hash, nil)
   end
-    
+
   # Returns the full name of the user.
   def full_name
     first_name + ' ' + last_name
@@ -70,5 +73,4 @@ class User < ApplicationRecord
   def delete_owned_lists
     lists.each(&:destroy)
   end
-
 end

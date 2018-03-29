@@ -1,3 +1,4 @@
+# Helper for manipulating sessions.
 module SessionsHelper
   # Logs in the given user.
   def log_in(user)
@@ -15,7 +16,7 @@ module SessionsHelper
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
   end
-  
+
   # Returns the current logged-in user (if any).
   def current_user
     if (user_id = session[:user_id])

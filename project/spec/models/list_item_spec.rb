@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 test_email = 'testEmail@test.com'
-test_password = 'testPassword'
+test_password = 't3stPassword'
 test_list_name = 'testList'
 test_description = 'testItem'
 test_list_item_comments = 'testComments'

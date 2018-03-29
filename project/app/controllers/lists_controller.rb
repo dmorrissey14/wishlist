@@ -1,29 +1,25 @@
-
+# Controller for accessing and manipulating Lists.
 class ListsController < ApplicationController
-  # before_action :logged_in_user, only: [:create, :destroy]
-  # before_action :correct_user,   only: :destroy
-
   def create
-    @list = List.new( owner:        current_user,
-                      name:         params[:list][:name],
-                      description:  params[:list][:description])
-
+    @list = List.new(owner:        current_user,
+                     name:         params[:list][:name],
+                     description:  params[:list][:description])
     if @list.save
       flash[:success] = 'List Created!'
       redirect_to '/users/show'
     else
-      flash.now[:notice] = 'Could not create list. Please verify it has a name and description.'
+      flash.now[:notice] = 'Could not create list. Please verify it has a'\
+                           ' name and description.'
       render 'new'
     end
   end
 
   def destroy
     list = List.find(params[:id])
-    unless list.nil?
-      list.destroy
-      flash[:success] = 'List Deleted'
-      redirect_to '/lists'
-    end
+    return if list.nil?
+    list.destroy
+    flash[:success] = 'List Deleted'
+    redirect_to '/lists'
   end
 
   def view_list

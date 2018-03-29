@@ -2,12 +2,12 @@ require 'rails_helper'
 require 'user_suggestion_cache'
 
 test_email_format = 'cache%<index>stest@test.com'
-test_password = 'testpassword'
+test_password = 't3stPassword'
 test_first_name_format = 'FirstNameTest%<index>s'
 test_last_name_format = 'LastNameTest%<index>s'
 test_group_name_format = 'TestGroup%<index>s'
 test_email2 = 'updatedtestEmail@test.com'
-test_password2 = 'testPassword2'
+test_password2 = 't3stPassword2'
 test_first_name2 = 'testFirstName2'
 test_last_name2 = 'testLastName2'
 
@@ -19,7 +19,7 @@ describe UserSuggestionCache do
     (0..10).each do |i|
       group = Group.create(name: format(test_group_name_format, index: i))
       groups.push(group)
-      @start_group_index = group.id if i == 0
+      @start_group_index = group.id if i.zero?
     end
     (0..100).each do |i|
       user = User.create(email: format(test_email_format, index: i),
@@ -27,7 +27,7 @@ describe UserSuggestionCache do
                          first_name: format(test_first_name_format, index: i),
                          last_name: format(test_last_name_format, index: i))
       groups[i % 10].users.push(user)
-      @start_user_index = user.id if i == 0
+      @start_user_index = user.id if i.zero?
     end
   end
 

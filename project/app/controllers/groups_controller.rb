@@ -1,27 +1,25 @@
+# Controller for accessing and manipulating Groups.
 class GroupsController < ApplicationController
-
-
   def create
-    @group = Group.new(name:      params[:group][:name],
-                       description:  params[:group][:description])
+    @group = Group.new(name:          params[:group][:name],
+                       description:   params[:group][:description])
 
     if @group.save
       flash[:success] = 'Group Created!'
-      @group.users.push(User.find_by(id: current_user.id))
+      @group.users.push(User.find(current_user.id))
       redirect_to '/groups'
     else
-      flash.now[:notice] = 'Could not create group. Please verify it has a name and description.'
+      flash.now[:notice] = 'Could not create group. Please verify it has a name.'
       render 'new'
     end
   end
 
   def destroy
     group = Group.find(params[:id])
-    unless group.nil?
-      group.destroy
-      flash[:success] = 'Group Deleted'
-      redirect_to '/groups'
-    end
+    return if group.nil?
+    group.destroy
+    flash[:success] = 'Group Deleted'
+    redirect_to '/groups'
   end
 
   def show
@@ -38,7 +36,7 @@ class GroupsController < ApplicationController
     if params[:group][:user_id].nil?
       list = List.find(params[:list][:id])
       group.lists.push(list)
-    else 
+    else
       user = User.find(params[:group][:user_id])
       group.users.push(user)
     end
