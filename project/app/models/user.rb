@@ -54,8 +54,8 @@ class User < ApplicationRecord
   end
 
   def authenticated?(remember_token)
-    return false if remember_digest.nil?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    return false if session_token_hash.nil?
+    BCrypt::Password.new(session_token_hash).is_password?(remember_token)
   end
 
   def forget

@@ -24,11 +24,15 @@ class ListsController < ApplicationController
 
   def view_list
     @list = List.find(params[:id])
+    return if @list.nil?
+    redirect_to '/users/show' unless @list.viewer?(current_user)
     @items = @list.list_items
     redirect_to '/list_items', @items
   end
 
   def show
     @list = List.find(params[:id])
+    return if @list.nil?
+    redirect_to '/users/show' unless @list.viewer?(current_user)
   end
 end
