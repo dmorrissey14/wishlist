@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "D:/GitHub/wishlist/project/spec/controllers/sessions_controller_spec.rb": [
+      "D:/github/wishlist/project/spec/controllers/sessions_controller_spec.rb": [
         1,
         null,
         1,
@@ -14,7 +14,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/spec/rails_helper.rb": [
+      "D:/github/wishlist/project/spec/rails_helper.rb": [
         null,
         1,
         1,
@@ -74,14 +74,14 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/config/environment.rb": [
+      "D:/github/wishlist/project/config/environment.rb": [
         null,
         1,
         null,
         null,
         1
       ],
-      "D:/GitHub/wishlist/project/config/application.rb": [
+      "D:/github/wishlist/project/config/application.rb": [
         1,
         null,
         1,
@@ -104,12 +104,12 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/config/boot.rb": [
+      "D:/github/wishlist/project/config/boot.rb": [
         1,
         null,
         1
       ],
-      "D:/GitHub/wishlist/project/config/environments/test.rb": [
+      "D:/github/wishlist/project/config/environments/test.rb": [
         1,
         null,
         null,
@@ -153,7 +153,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/config/initializers/application_controller_renderer.rb": [
+      "D:/github/wishlist/project/config/initializers/application_controller_renderer.rb": [
         null,
         null,
         null,
@@ -163,7 +163,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/config/initializers/assets.rb": [
+      "D:/github/wishlist/project/config/initializers/assets.rb": [
         null,
         null,
         null,
@@ -175,35 +175,35 @@
         1,
         null,
         null,
-        null,
-        null,
-        null,
-        null,
-        1
-      ],
-      "D:/GitHub/wishlist/project/config/initializers/backtrace_silencers.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "D:/GitHub/wishlist/project/config/initializers/cookies_serializer.rb": [
         null,
         null,
         null,
         null,
         1
       ],
-      "D:/GitHub/wishlist/project/config/initializers/filter_parameter_logging.rb": [
+      "D:/github/wishlist/project/config/initializers/backtrace_silencers.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "D:/github/wishlist/project/config/initializers/cookies_serializer.rb": [
+        null,
         null,
         null,
         null,
         1
       ],
-      "D:/GitHub/wishlist/project/config/initializers/inflections.rb": [
+      "D:/github/wishlist/project/config/initializers/filter_parameter_logging.rb": [
+        null,
+        null,
+        null,
+        1
+      ],
+      "D:/github/wishlist/project/config/initializers/inflections.rb": [
         null,
         null,
         null,
@@ -221,13 +221,13 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/config/initializers/mime_types.rb": [
+      "D:/github/wishlist/project/config/initializers/mime_types.rb": [
         null,
         null,
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/config/initializers/wrap_parameters.rb": [
+      "D:/github/wishlist/project/config/initializers/wrap_parameters.rb": [
         null,
         null,
         null,
@@ -243,7 +243,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/config/routes.rb": [
+      "D:/github/wishlist/project/config/routes.rb": [
         1,
         1,
         null,
@@ -273,7 +273,7 @@
         1,
         null
       ],
-      "D:/GitHub/wishlist/project/app/controllers/application_controller.rb": [
+      "D:/github/wishlist/project/app/controllers/application_controller.rb": [
         null,
         1,
         1,
@@ -288,7 +288,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/app/helpers/application_helper.rb": [
+      "D:/github/wishlist/project/app/helpers/application_helper.rb": [
         null,
         1,
         1,
@@ -301,12 +301,12 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/app/helpers/list_items_helper.rb": [
+      "D:/github/wishlist/project/app/helpers/list_items_helper.rb": [
         null,
         1,
         null
       ],
-      "D:/GitHub/wishlist/project/app/helpers/sessions_helper.rb": [
+      "D:/github/wishlist/project/app/helpers/sessions_helper.rb": [
         null,
         1,
         null,
@@ -352,29 +352,29 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/app/helpers/static_helper.rb": [
+      "D:/github/wishlist/project/app/helpers/static_helper.rb": [
         null,
         1,
         null
       ],
-      "D:/GitHub/wishlist/project/app/helpers/users_helper.rb": [
+      "D:/github/wishlist/project/app/helpers/users_helper.rb": [
         null,
         1,
         null
       ],
-      "D:/GitHub/wishlist/project/app/channels/application_cable/channel.rb": [
-        1,
-        1,
-        null,
-        null
-      ],
-      "D:/GitHub/wishlist/project/app/channels/application_cable/connection.rb": [
+      "D:/github/wishlist/project/app/channels/application_cable/channel.rb": [
         1,
         1,
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/app/controllers/groups_controller.rb": [
+      "D:/github/wishlist/project/app/channels/application_cable/connection.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "D:/github/wishlist/project/app/controllers/groups_controller.rb": [
         null,
         1,
         1,
@@ -423,7 +423,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/app/controllers/list_items_controller.rb": [
+      "D:/github/wishlist/project/app/controllers/list_items_controller.rb": [
         null,
         1,
         1,
@@ -465,7 +465,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/app/controllers/lists_controller.rb": [
+      "D:/github/wishlist/project/app/controllers/lists_controller.rb": [
         null,
         1,
         1,
@@ -494,53 +494,57 @@
         0,
         0,
         0,
+        0,
+        0,
         null,
         null,
         1,
         0,
-        null,
-        null
-      ],
-      "D:/GitHub/wishlist/project/app/controllers/sessions_controller.rb": [
-        null,
-        1,
-        1,
-        null,
-        1,
-        null,
-        1,
-        1,
-        1,
-        null,
-        1,
-        1,
-        null,
-        1,
-        1,
-        1,
-        null,
-        null,
-        null,
-        1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        null,
-        0,
-        null,
-        0,
-        null,
-        null,
-        null,
-        1,
         0,
         0,
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/app/controllers/static_controller.rb": [
+      "D:/github/wishlist/project/app/controllers/sessions_controller.rb": [
+        null,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null
+      ],
+      "D:/github/wishlist/project/app/controllers/static_controller.rb": [
         null,
         1,
         1,
@@ -550,7 +554,7 @@
         1,
         null
       ],
-      "D:/GitHub/wishlist/project/app/controllers/users_controller.rb": [
+      "D:/github/wishlist/project/app/controllers/users_controller.rb": [
         null,
         1,
         1,
@@ -586,25 +590,25 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/app/jobs/application_job.rb": [
+      "D:/github/wishlist/project/app/jobs/application_job.rb": [
         null,
         1,
         null
       ],
-      "D:/GitHub/wishlist/project/app/mailers/application_mailer.rb": [
+      "D:/github/wishlist/project/app/mailers/application_mailer.rb": [
         null,
         1,
         1,
         1,
         null
       ],
-      "D:/GitHub/wishlist/project/app/models/application_record.rb": [
+      "D:/github/wishlist/project/app/models/application_record.rb": [
         null,
         1,
         1,
         null
       ],
-      "D:/GitHub/wishlist/project/app/models/group.rb": [
+      "D:/github/wishlist/project/app/models/group.rb": [
         null,
         1,
         null,
@@ -617,7 +621,7 @@
         1,
         null
       ],
-      "D:/GitHub/wishlist/project/app/models/list.rb": [
+      "D:/github/wishlist/project/app/models/list.rb": [
         null,
         1,
         null,
@@ -647,7 +651,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/app/models/list_item.rb": [
+      "D:/github/wishlist/project/app/models/list_item.rb": [
         null,
         1,
         null,
@@ -666,7 +670,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/app/models/user.rb": [
+      "D:/github/wishlist/project/app/models/user.rb": [
         null,
         1,
         null,
@@ -744,7 +748,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/spec/controllers/static_controller_spec.rb": [
+      "D:/github/wishlist/project/spec/controllers/static_controller_spec.rb": [
         1,
         null,
         1,
@@ -771,7 +775,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/spec/controllers/users_controller_spec.rb": [
+      "D:/github/wishlist/project/spec/controllers/users_controller_spec.rb": [
         1,
         null,
         1,
@@ -798,7 +802,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/spec/helpers/sessions_helper_spec.rb": [
+      "D:/github/wishlist/project/spec/helpers/sessions_helper_spec.rb": [
         1,
         null,
         1,
@@ -820,7 +824,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/spec/lib/user_suggestion_cache_spec.rb": [
+      "D:/github/wishlist/project/spec/lib/user_suggestion_cache_spec.rb": [
         1,
         1,
         null,
@@ -905,7 +909,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/lib/user_suggestion_cache.rb": [
+      "D:/github/wishlist/project/lib/user_suggestion_cache.rb": [
         1,
         null,
         null,
@@ -979,7 +983,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/spec/models/group_spec.rb": [
+      "D:/github/wishlist/project/spec/models/group_spec.rb": [
         1,
         null,
         1,
@@ -1064,7 +1068,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/spec/models/list_item_spec.rb": [
+      "D:/github/wishlist/project/spec/models/list_item_spec.rb": [
         1,
         null,
         1,
@@ -1143,7 +1147,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/spec/models/list_spec.rb": [
+      "D:/github/wishlist/project/spec/models/list_spec.rb": [
         1,
         null,
         1,
@@ -1248,7 +1252,7 @@
         null,
         null
       ],
-      "D:/GitHub/wishlist/project/spec/models/user_spec.rb": [
+      "D:/github/wishlist/project/spec/models/user_spec.rb": [
         1,
         null,
         1,
@@ -1393,6 +1397,6 @@
         null
       ]
     },
-    "timestamp": 1522294055
+    "timestamp": 1522364088
   }
 }
