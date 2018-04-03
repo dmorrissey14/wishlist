@@ -1,3 +1,4 @@
+# Helper for top-level application functions.
 module ApplicationHelper
   def full_title(page_title = '')
     base_title = 'The Wish List'

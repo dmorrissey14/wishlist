@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/codahale/bcrypt-ruby.git
+  revision: f2db689ba567d1a018f4dacb1ccf909adc93e887
+  specs:
+    bcrypt (3.1.11)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -47,7 +53,6 @@ GEM
     ast (2.4.0)
     autoprefixer-rails (8.0.0)
       execjs
-    bcrypt (3.1.11-x64-mingw32)
     bindex (0.5.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
@@ -177,6 +182,8 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
+    rubocop-rspec (1.23.0)
+      rubocop (>= 0.52.1)
     ruby-progressbar (1.9.0)
     rubyzip (1.2.1)
     sass (3.5.5)
@@ -237,6 +244,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-sqlserver-adapter (= 5.1.6)
+  bcrypt!
   bootstrap-sass (= 3.3.7)
   byebug
   capybara (~> 2.13)
@@ -250,6 +258,7 @@ DEPENDENCIES
   rails-controller-testing
   rspec-rails (~> 3.2)
   rubocop (>= 0.52.1)
+  rubocop-rspec
   sass-rails (~> 5.0)
   selenium-webdriver
   simplecov

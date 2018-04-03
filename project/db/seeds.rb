@@ -10,10 +10,8 @@
 case Rails.env
 when 'development'
   # Do development environment specific seeding here.
-  user = User.new('dev@thewishlist.com', 'TheWishList')
-  user.first_name = 'WishList'
-  user.last_name = 'Dev'
-  user.save
+  User.create(email: 'dev@thewishlist.com', password: 'Th3W1shL1st',
+              first_name: 'WishList', last_name: 'Dev')
   # when 'test'
   #   # Do test environment specific seeding here.
   # when 'production'

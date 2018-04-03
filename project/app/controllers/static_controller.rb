@@ -1,8 +1,8 @@
+# Controller for accessing and manipulating static actions.
 class StaticController < ApplicationController
-  def home
-  end
+  skip_before_action :confirm_logged_in, only: %i[home create]
 
-  def login
-  end
-  
+  def home; end
+
+  def login; end
 end
