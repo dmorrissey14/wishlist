@@ -9,6 +9,11 @@ $red-accent: #FF3B3f;
 .group {
   list-style: none;
   padding: 0;
+  margin-bottom: 1em;
+
+  .group-name {
+    margin-top: 0;
+  }
 
   li {
     padding: 10px 0;
