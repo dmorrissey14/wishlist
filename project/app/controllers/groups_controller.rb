@@ -1,3 +1,5 @@
+require 'user_suggestion_cache'
+
 # Controller for accessing and manipulating Groups.
 class GroupsController < ApplicationController
   def create
@@ -26,6 +28,7 @@ class GroupsController < ApplicationController
   def show
     if logged_in?
       @user = current_user
+      @cache = UserSuggestionCache.new(@user)
     else
       redirect_to '/login'
     end
@@ -33,7 +36,7 @@ class GroupsController < ApplicationController
 
   # Need to do some error checks here, just trying to get functionality
   def update
-    group = Group.find(params[:group][:id])
+    group = Group.find(params[:id])
     if params[:group][:user_id].nil?
       list = List.find(params[:list][:id])
       group.lists.push(list)
