@@ -37,14 +37,34 @@ class GroupsController < ApplicationController
   # Need to do some error checks here, just trying to get functionality
   def update
     group = Group.find(params[:id])
+    return if group.nil?
     if params[:group][:user_id].nil?
-      list = List.find(params[:list][:id])
-      group.lists.push(list)
+      add_list_to_group(group)
     else
-      user = User.find(params[:group][:user_id])
-      group.users.push(user)
+      add_user_to_group(group)
     end
-    group.save
     redirect_to '/groups'
+  end
+
+  private
+
+  def add_list_to_group(group)
+    list = List.find_by id: params[:list][:id]
+    unless list.nil?
+      return if group.lists.include?(list)
+      group.lists.push(list)
+      return if group.save
+    end
+    flash.now[:notice] = 'Could not update lists'
+  end
+
+  def add_user_to_group(group)
+    user = User.find_by id: params[:group][:user_id]
+    unless user.nil?
+      return if group.users.include?(user)
+      group.users.push(user)
+      return if group.save
+    end
+    flash.now[:notice] = 'Could not update users'
   end
 end
