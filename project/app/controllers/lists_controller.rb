@@ -18,7 +18,7 @@ class ListsController < ApplicationController
     list = List.find(params[:id])
     return if list.nil?
     list.destroy
-    flash[:success] = 'List Deleted'
+    flash[:warning] = 'List Deleted'
     redirect_to '/lists'
   end
 

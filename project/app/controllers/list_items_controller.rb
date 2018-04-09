@@ -10,19 +10,20 @@ class ListItemsController < ApplicationController
     begin
       Integer(params[:List_Item][:Quantity])
       if @item.save
-        flash[:success] = 'Item created'
+
+        flash[:success] = 'Item Created!'
         redirect_to '/lists'
       else
-        flash.now[:notice] = 'Could not create item. Please verify all fields'\
-                             ' filled in.'
-        render '/lists'
+        flash[:notice] = 'Could not create item. Please'\
+                          ' verify all fields filled in'\
+                          ' correctly.'
+        redirect_to request.referrer
       end
     rescue
-      flash.now[:notice] = 'Could not create item. Please verify all fields'\
-                           ' filled in correctly.'
-      redirect_to request.referrer, notice: 'Could not create item. Please'\
-                                            ' verify all fields filled in'\
-                                            ' correctly.'
+      flash[:notice] = 'Could not create item. Please'\
+                       ' verify all fields filled in'\
+                       ' correctly.'
+      redirect_to request.referrer
       @item.destroy
     end
   end
@@ -34,7 +35,7 @@ class ListItemsController < ApplicationController
   def destroy
     item = ListItem.find(params[:id])
     item.destroy
-    flash[:success] = 'List Item Deleted'
-    redirect_to '/lists'
+    flash[:warning] = 'Item Deleted'
+    redirect_to request.referrer
   end
 end

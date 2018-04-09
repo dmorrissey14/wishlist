@@ -5,6 +5,12 @@
           <hr>
       </div>
     <div class="col-md-10 group-shell">
+      <% if flash[:success] %>
+        <div class="alert alert-success"><strong>Success: </strong><%= flash[:success] %></div>
+      <% end %>
+      <% if flash[:warning] %>
+        <div class="alert alert-warning"><strong>Success: </strong><%= flash[:warning] %></div>
+      <% end %>
       <% if @user.groups.any? %>       
         <%= render @user.groups %>
       <% end %>

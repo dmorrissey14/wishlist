@@ -9,8 +9,8 @@ class GroupsController < ApplicationController
       @group.users.push(User.find(current_user.id))
       redirect_to '/groups'
     else
-      flash.now[:notice] = 'Could not create group.'\
-                           ' Please verify it has a name.'
+      flash[:notice] = 'Could not create group.'\
+                       ' Please verify it has a name.'
       render 'new'
     end
   end
@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
     group = Group.find(params[:id])
     return if group.nil?
     group.destroy
-    flash[:success] = 'Group Deleted'
+    flash[:warning] = 'Group Deleted'
     redirect_to '/groups'
   end
 
