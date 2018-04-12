@@ -24,7 +24,7 @@ $red-accent: #FF3B3f;
 
 @font-face{
   font-family: 'Signika';
-  src:font-url('Signika-Regular.ttf') format('truetype');
+  src:font-url('Signika-Light.ttf') format('truetype');
   font-weight:normal;
   font-style:normal;
 }
@@ -36,22 +36,24 @@ $red-accent: #FF3B3f;
 .list-item{
   padding-top:5px;
   font-family: Roboto;
+  font-size:1em;
   
   .item-image{
     max-height:100px;
   }
 
   .item-descripton{
-    font-size:1.2em;
+    font-size:1.3em;
   }
 
   .item-comments{
-    font-size: 1.2em;
-    padding-top:10px;
+    font-size: 1.3em;
+    padding-top:15px;
   }
   
   .item-quantity{
     padding-top:10px;
+    font-size:1.1em;
   }
   
   .item-purchased{
