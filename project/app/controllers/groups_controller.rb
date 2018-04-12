@@ -59,12 +59,32 @@ class GroupsController < ApplicationController
   end
 
   def add_user_to_group(group)
-    user = User.find_by id: params[:group][:user_id]
+    user = infer_user_from_string(params[:group][:user_id])
     unless user.nil?
       return if group.users.include?(user)
       group.users.push(user)
       return if group.save
     end
     flash.now[:notice] = 'Could not update users'
+  end
+
+  def infer_user_from_string(user_string)
+    # Is user_string an email?
+    if user_string.include?('@')
+      User.find_each do |record|
+        if BCrypt::Password.new(record[:email_hash]).is_password?(user_string)
+          return record
+        end
+      end
+      flash.now[:notice] = 'Could not find user with provided address.'
+      return nil
+    end
+
+    # Attempt to locate the user ID in the string and use that.
+    # Assuming string format is "user_name (user_id)"
+    start_index = user_string.index('(') + 1
+    end_index = user_string.index(')') - 1
+    return nil if start_index.nil? || end_index.nil?
+    User.find_by id: user_string.slice(start_index..end_index)
   end
 end
