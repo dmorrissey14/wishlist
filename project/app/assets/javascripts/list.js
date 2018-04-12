@@ -3,6 +3,6 @@ document.addEventListener("turbolinks:load", function() {
     $(this).parents(".list-header").children(".list-item").toggleClass("item-hide");
   });
   $(".collapse-target").on("click", function(){
-    $(this).parents(".list-header").children(".dropdown").toggleClass("fa-caret-right fa-caret-down");
+    $(this).find(".dropdown").toggleClass("fa-caret-right fa-caret-down");
   });
 });
