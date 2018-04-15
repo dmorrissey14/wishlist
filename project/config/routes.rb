@@ -11,14 +11,14 @@ Rails.application.routes.draw do
 
   get 'static/home'
 
-  get  '/login',   to: 'sessions#new' # returns login pa 
-  post '/login',   to: 'sessions#create' # processes login data
+  get  '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
 
-  get '/logout',  to: 'sessions#destroy'
+  get '/logout', to: 'sessions#destroy'
 
   get '/groups', to: 'groups#show'
   delete '/groups', to: 'groups#destroy'
-  
+
   post 'list_items/new', to: 'list_items#new'
 
   resources :users

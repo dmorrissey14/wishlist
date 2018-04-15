@@ -1,3 +1,5 @@
+require 'user_suggestion_cache'
+
 # Controller for accessing and manipulating Groups.
 class GroupsController < ApplicationController
   def create
@@ -26,22 +28,62 @@ class GroupsController < ApplicationController
   def show
     if logged_in?
       @user = current_user
+      @cache = UserSuggestionCache.new(@user)
     else
       redirect_to '/login'
     end
   end
 
-  # Need to do some error checks here, just trying to get functionality
   def update
-    group = Group.find(params[:group][:id])
+    group = Group.find(params[:id])
+    return if group.nil?
     if params[:group][:user_id].nil?
-      list = List.find(params[:list][:id])
-      group.lists.push(list)
+      add_list_to_group(group)
     else
-      user = User.find(params[:group][:user_id])
-      group.users.push(user)
+      add_user_to_group(group)
     end
-    group.save
     redirect_to '/groups'
+  end
+
+  private
+
+  def add_list_to_group(group)
+    list = List.find_by id: params[:list][:id]
+    unless list.nil?
+      return if group.lists.include?(list)
+      group.lists.push(list)
+      return if group.save
+    end
+    flash.now[:notice] = 'Could not update lists'
+  end
+
+  def add_user_to_group(group)
+    user = infer_user_from_string(params[:group][:user_id])
+    unless user.nil?
+      return if group.users.include?(user)
+      group.users.push(user)
+      return if group.save
+    end
+    flash.now[:notice] = 'Could not update users'
+  end
+
+  def infer_user_from_string(user_string)
+    # Is user_string an email?
+    if user_string.include?('@')
+      User.find_each do |record|
+        if BCrypt::Password.new(record[:email_hash]).is_password?(user_string)
+          return record
+        end
+      end
+      flash.now[:notice] = 'Could not find user with provided address.'
+      return nil
+    end
+
+    # Attempt to locate the user ID in the string and use that.
+    # Assuming string format is "user_name (user_id)"
+    start_index = user_string.index('(') + 1
+    end_index = user_string.index(')') - 1
+    return nil if start_index.nil? || end_index.nil?
+    User.find_by id: user_string.slice(start_index..end_index)
   end
 end
