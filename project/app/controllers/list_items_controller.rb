@@ -22,24 +22,29 @@ class ListItemsController < ApplicationController
     warning4 = 'Could not create item. Please'\
               ' verify Item Name and Quantity'\
               ' fields are filled in correctly.'\
-              ' Image Url field may also be invalid.'\
-              ' Make sure image url ends with .jpg'\
-              ' or .png.'
+              ' Image URL field may be incompatible.'\
+              ' Make sure image URL ends with .jpg,'\
+              ' .png or .apng and is a valid http or'\
+              ' https URL.'
 
     warning5 = 'Could not create item. Please'\
               ' verify Quantity field is filled in'\
-              ' correctly. Image Url field may also'\
-              ' be invalid. Make sure image url ends'\
-              ' with .jpg or .png.'
+              ' correctly. Image URL field may be'\
+              ' incompatible. Make sure image URL ends'\
+              ' with .jpg, .png or .apng and is a'\
+              ' valid http or https URL.'
 
     warning6 = 'Could not create item. Please'\
               ' verify Item Name field is filled in'\
-              ' correctly. Image Url field may also'\
-              ' be invalid. Make sure image url ends'\
-              ' with .jpg or .png.'
-    warning7 = 'Could not create item. Image Url field'\
-              ' may be invalid. Make sure image url ends'\
-              ' with .jpg or .png.'
+              ' correctly. Image URL field may be'\
+              ' incompatible. Make sure image URL ends'\
+              ' with .jpg, .png or .apng and is a'\
+              ' valid http or https URL.'
+
+    warning7 = 'Could not create item. Image URL field'\
+              ' may be incompatible. Make sure image URL ends'\
+              ' with .jpg, .png or .apng and is a valid http or'\
+              ' https URL.'
 
     # Check Both crucial quantities and then check rest under those
     # Quantity messed up
@@ -47,13 +52,13 @@ class ListItemsController < ApplicationController
       Integer(params[:List_Item][:Quantity])
     rescue
       if params[:List_Item][:Description].empty?
-        if  !params[:List_Item][:Link].empty? && !(params[:List_Item][:Link][".jpg"] || params[:List_Item][:Link][".png"])
+        if !params[:List_Item][:Link].empty?  && !((params[:List_Item][:Link][".jpg"] || params[:List_Item][:Link][".png"] || params[:List_Item][:Link][".apng"]) && (params[:List_Item][:Link]["http://"] || params[:List_Item][:Link]["https://"]))
           flash[:notice] = warning4
         else
           flash[:notice] = warning1
         end
       else
-        if !params[:List_Item][:Link].empty? && !(params[:List_Item][:Link][".jpg"] || params[:List_Item][:Link][".png"])
+        if !params[:List_Item][:Link].empty?  && !((params[:List_Item][:Link][".jpg"] || params[:List_Item][:Link][".png"] || params[:List_Item][:Link][".apng"]) && (params[:List_Item][:Link]["http://"] || params[:List_Item][:Link]["https://"]))
           flash[:notice] = warning5
         else
           flash[:notice] = warning3
@@ -65,9 +70,9 @@ class ListItemsController < ApplicationController
     end
 
     # Description messed up
-    if params[:List_Item][:Description].empty?     
-      if !params[:List_Item][:Link].empty? && !(params[:List_Item][:Link][".jpg"] || params[:List_Item][:Link][".png"])
-          flash[:notice] = warning6
+    if params[:List_Item][:Description].empty?
+      if !params[:List_Item][:Link].empty?  && !((params[:List_Item][:Link][".jpg"] || params[:List_Item][:Link][".png"] || params[:List_Item][:Link][".apng"]) && (params[:List_Item][:Link]["http://"] || params[:List_Item][:Link]["https://"]))
+        flash[:notice] = warning6
       else
         flash[:notice] = warning2
       end
@@ -77,7 +82,7 @@ class ListItemsController < ApplicationController
     end
 
     # Image URL is filled in but messed up
-    if !params[:List_Item][:Link].empty? && !(params[:List_Item][:Link][".jpg"] || params[:List_Item][:Link][".png"])  
+    if !params[:List_Item][:Link].empty? && !((params[:List_Item][:Link][".jpg"] || params[:List_Item][:Link][".png"] || params[:List_Item][:Link][".apng"]) && (params[:List_Item][:Link]["http://"] || params[:List_Item][:Link]["https://"]))
       flash[:notice] = warning7
       @item.destroy
       redirect_to request.referrer
