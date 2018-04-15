@@ -139,4 +139,17 @@ describe User, type: :model do
       expect(user.full_name).to eq('John Doe')
     end
   end
+
+  describe '#display_string' do
+    it 'contains the full name of the user' do
+      user = User.create(email: test_email, password: test_password,
+                         first_name: test_first_name, last_name: test_last_name)
+      expect(user.display_string.include?(user.full_name)).to be true
+    end
+    it 'contains the ID of the user' do
+      user = User.create(email: test_email, password: test_password,
+                         first_name: test_first_name, last_name: test_last_name)
+      expect(user.display_string.include?(user.id.to_s)).to be true
+    end
+  end
 end

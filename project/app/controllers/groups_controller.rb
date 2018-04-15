@@ -34,7 +34,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  # Need to do some error checks here, just trying to get functionality
   def update
     group = Group.find(params[:id])
     return if group.nil?
