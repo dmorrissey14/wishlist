@@ -2,6 +2,67 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* Main color themes*/
+$main-grey-color: #EFEFEF;
+$dark-grey-text: #A9A9A9;
+$blue-contrast: #CAEBF2;
+$red-accent: #FF3B3f;
+
+@font-face{
+  font-family: 'Roboto';
+  src:font-url('Roboto-Thin.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: 'Roboto-Full';
+  src:font-url('Roboto-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: 'Signika';
+  src:font-url('Signika-Light.ttf') format('truetype');
+  font-weight:normal;
+  font-style:normal;
+}
+
 .item-hide{
   display:none
+}
+
+.list-item{
+  padding-top:5px;
+  font-family: Roboto;
+  font-size:1em;
+  
+  .item-image{
+    max-height:100px;
+  }
+
+  .item-descripton{
+    font-size:1.3em;
+  }
+
+  .item-comments{
+    font-size: 1.3em;
+    padding-top:18px;
+  }
+  
+  .item-quantity{
+    padding-top:18px;
+    font-size:1.1em;
+  }
+  
+  .item-purchased{
+    padding-top:18px;
+  }
+
+  .button_to{
+    padding-top:18px;
+    margin-right:10px;
+  }
+
 }
