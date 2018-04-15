@@ -9,18 +9,18 @@ class ListItemsController < ApplicationController
                          quantity:     params[:List_Item][:Quantity])
     
     warning1 = 'Could not create item. Please'\
-              ' verify Description and Quantity'\
+              ' verify Item Name and Quantity'\
               ' fields are filled in correctly.'
 
     warning2 = 'Could not create item. Please'\
-              ' verify Description field is'\
+              ' verify Item Name field is'\
               ' filled in correctly.'
 
     warning3 = 'Could not create item. Quantity'\
               ' Value field is invalid.'
 
     warning4 = 'Could not create item. Please'\
-              ' verify Description and Quantity'\
+              ' verify Item Name and Quantity'\
               ' fields are filled in correctly.'\
               ' Image Url field may also be invalid.'\
               ' Make sure image url ends with .jpg'\
@@ -33,12 +33,14 @@ class ListItemsController < ApplicationController
               ' with .jpg or .png.'
 
     warning6 = 'Could not create item. Please'\
-              ' verify Description field is filled in'\
+              ' verify Item Name field is filled in'\
               ' correctly. Image Url field may also'\
               ' be invalid. Make sure image url ends'\
               ' with .jpg or .png.'
-    
-    
+    warning7 = 'Could not create item. Image Url field'\
+              ' may be invalid. Make sure image url ends'\
+              ' with .jpg or .png.'
+
     # Check Both crucial quantities and then check rest under those
     # Quantity messed up
     begin
@@ -69,6 +71,14 @@ class ListItemsController < ApplicationController
       else
         flash[:notice] = warning2
       end
+      @item.destroy
+      redirect_to request.referrer
+      return
+    end
+
+    # Image URL is filled in but messed up
+    if !params[:List_Item][:Link].empty? && !(params[:List_Item][:Link][".jpg"] || params[:List_Item][:Link][".png"])  
+      flash[:notice] = warning7
       @item.destroy
       redirect_to request.referrer
       return

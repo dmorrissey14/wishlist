@@ -4,24 +4,16 @@ class ListsController < ApplicationController
     @list = List.new(owner:        current_user,
                      name:         params[:list][:name],
                      description:  params[:list][:description])
-    begin
-      String(params[:list][:description])
-      if @list.save && !(params[:list][:description].empty?)
-        flash[:success] = 'List Created!'
-        redirect_to '/lists'
-      else
-        flash.now[:notice] = 'Could not create list. Please verify it has a'\
-                            ' name and description.'
-        render 'new'
-      end
-      
-    rescue
-      flash.now[:notice] = 'Could not create list. Please verify it has a'\
-      ' name and description.'
+    
+    if @list.save
+      flash[:success] = 'List Created!'
+      redirect_to '/lists'
+    else
+      flash.now[:notice] = 'Could not create list. Please verify it has a name'
       render 'new'
     end
   end
-
+  
   def destroy
     list = List.find(params[:id])
     return if list.nil?
@@ -31,6 +23,7 @@ class ListsController < ApplicationController
   end
 
   def view_list
+    debugger
     @list = List.find(params[:id])
     return if @list.nil?
     redirect_to '/lists' unless @list.viewer?(current_user)
@@ -39,6 +32,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    debugger
     @list = List.find(params[:id])
     return if @list.nil?
     redirect_to '/lists' unless @list.viewer?(current_user)

@@ -13,10 +13,10 @@
       <% if flash[:warning] %>
         <div class="alert alert-warning"><strong>Success: </strong><%= flash[:warning] %></div>
       <% end %>
-      <%= f.label :Description %>
+      <%= f.label :'Item Name' %>
       <%= f.text_field :Description, class: 'form-control' %>
 
-      <%= f.label :Comments %>
+      <%= f.label :Description %>
       <%= f.text_field :Comments, class: 'form-control' %>
 
       <%= f.label :'Image URL Link (.jpg or .png)' %>
