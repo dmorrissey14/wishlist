@@ -23,7 +23,6 @@ class ListsController < ApplicationController
   end
 
   def view_list
-    debugger
     @list = List.find(params[:id])
     return if @list.nil?
     redirect_to '/lists' unless @list.viewer?(current_user)
@@ -32,7 +31,6 @@ class ListsController < ApplicationController
   end
 
   def show
-    debugger
     @list = List.find(params[:id])
     return if @list.nil?
     redirect_to '/lists' unless @list.viewer?(current_user)

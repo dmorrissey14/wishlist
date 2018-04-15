@@ -1,3 +1,22 @@
+/* Main color themes*/
+$main-grey-color: #EFEFEF;
+$dark-grey-text: #A9A9A9;
+$blue-contrast: #CAEBF2;
+$red-accent: #FF3B3f;
+
+@font-face{
+  font-family: 'Roboto';
+  src:font-url('Roboto-Thin.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face{
+  font-family: 'Signika';
+  src:font-url('Signika-Regular.ttf') format('truetype');
+  font-weight:normal;
+  font-style:normal;
+}
 .row{
   overflow: hidden; 
 }
@@ -7,17 +26,33 @@
   padding-bottom: 99999px;
 }
 
-.list-name{
-  padding-top:0px;
-  margin-top:0px;
-}
-
-.list-description{
-  padding-top:0px;
-  margin-top:0px;
-}
-
-.list-header{
-  padding-left:40px;
-  padding-bottom:40px;
+.user-header{
+  .list-name{
+    padding-top:30px;
+    margin-top:0px;
+    font-family: Signika;
+  }
+  
+  .list-description{
+    padding-top:30px;
+    margin-top:0px;
+    font-family: Signika;
+  }
+  
+  .list-header{
+    padding-left:40px;
+    padding-bottom:40px;
+    border: solid 1px $dark-grey-text;
+    border-radius: 15px;
+    margin:10px;
+  }
+  
+  .button_to{
+    padding-top:30px;
+    margin-right:10px;
+  }
+  .list-name:hover{
+    text-shadow: 1px 1px $dark-grey-text;
+    cursor: pointer;
+  }
 }
