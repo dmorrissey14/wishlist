@@ -4,7 +4,7 @@ class ListsController < ApplicationController
     @list = List.new(owner:        current_user,
                      name:         params[:list][:name],
                      description:  params[:list][:description])
-    
+
     if @list.save
       flash[:success] = 'List Created!'
       redirect_to '/lists'
@@ -13,7 +13,7 @@ class ListsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def destroy
     list = List.find(params[:id])
     return if list.nil?
@@ -24,10 +24,11 @@ class ListsController < ApplicationController
 
   def view_list
     @list = List.find(params[:id])
+    @current_user = current_user
     return if @list.nil?
     redirect_to '/lists' unless @list.viewer?(current_user)
     @items = @list.list_items
-    redirect_to '/list_items', @items
+    redirect_to '/list_items', @items, @list, @current_user
   end
 
   def show

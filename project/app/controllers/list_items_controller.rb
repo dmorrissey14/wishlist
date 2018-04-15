@@ -106,8 +106,17 @@ class ListItemsController < ApplicationController
 
   def destroy
     item = ListItem.find(params[:id])
-    item.destroy
-    flash[:warning] = 'Item Deleted'
+    if item.list.user_id != current_user.id
+      if item.purchased.zero?
+        item.purchased = 1
+      else
+        item.purchased = 0
+      end
+      item.save
+    else
+      item.destroy
+      flash[:warning] = 'Item Deleted'
+    end
     redirect_to request.referrer
   end
 end

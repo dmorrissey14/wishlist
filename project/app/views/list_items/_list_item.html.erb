@@ -18,15 +18,25 @@
   <div class="col-md-2 item-quantity">
     <span>Quantity: <%= list_item.quantity %></span>
   </div>
-  <div class="col-md-1 item-purchased">
-    <% if list_item.purchased? && viewable?(list_item) %>
-            Purchased: Yes
-    <% else %>
-            Purchased: No
-    <% end %>
-  </div>
-  <div class="col-md-1">
-    <%= button_to  "Delete",  {controller: 'list_items', :action => 'destroy', id: list_item.id}, 
-                                      {:method => :delete, :confirm => 'Are you sure?', :remote => true, class: "btn btn-primary"} %>
-  </div>
+  <% unless current_user.id == list_item.list.user_id %>
+    <div class="col-md-1 item-purchased">
+      <% if list_item.purchased? %>
+              Purchased: Yes
+      <% else %>
+              Purchased: No
+      <% end %>
+    </div>
+  <% end %>
+  <% unless current_user.id != list_item.list.user_id %>
+    <div class="col-md-1">
+      <%= button_to  "Delete",  {controller: 'list_items', :action => 'destroy', id: list_item.id}, 
+                                        {:method => :delete, :confirm => 'Are you sure?', :remote => true, class: "btn btn-primary"} %>
+    </div>
+  <% end %>
+  <% unless current_user.id == list_item.list.user_id %>
+    <div class="col-md-1">
+      <%= button_to  "Mark Purchased",  {controller: 'list_items', :action => 'destroy', id: list_item.id}, 
+                                        {:method => :delete, :remote => true, class: "btn btn-primary"} %>
+    </div>
+  <% end %>
 </div>
