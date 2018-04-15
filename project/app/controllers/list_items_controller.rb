@@ -107,10 +107,10 @@ class ListItemsController < ApplicationController
   def destroy
     item = ListItem.find(params[:id])
     if item.list.user_id != current_user.id
-      if item.purchased.zero?
-        item.purchased = 1
-      else
+      if item.purchased?
         item.purchased = 0
+      else
+        item.purchased = 1
       end
       item.save
     else
