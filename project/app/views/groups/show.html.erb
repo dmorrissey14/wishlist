@@ -1,24 +1,26 @@
-<div class="user-header container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-          <h2 class="username"><%= @user.first_name %> <%= @user.last_name %>'s Groups</h2>
-          <hr>
+<div class="bg">
+  <div class="user-header container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+            <h2 class="username"><%= @user.first_name %> <%= @user.last_name %>'s Groups</h2>
+            <hr>
+        </div>
+      <div class="col-md-10 group-shell">
+        <% if flash[:success] %>
+          <div class="alert alert-success"><strong>Success: </strong><%= flash[:success] %></div>
+        <% end %>
+        <% if flash[:warning] %>
+          <div class="alert alert-warning"><strong>Success: </strong><%= flash[:warning] %></div>
+        <% end %>
+        <% if @user.groups.any? %>       
+          <%= render @user.groups %>
+        <% end %>
       </div>
-    <div class="col-md-10 group-shell">
-      <% if flash[:success] %>
-        <div class="alert alert-success"><strong>Success: </strong><%= flash[:success] %></div>
-      <% end %>
-      <% if flash[:warning] %>
-        <div class="alert alert-warning"><strong>Success: </strong><%= flash[:warning] %></div>
-      <% end %>
-      <% if @user.groups.any? %>       
-        <%= render @user.groups %>
-      <% end %>
-    </div>
-    <div class="col-md-2 list-options">
-      <ul class>
-        <a class="new-list" href="/groups/new">Create New group</a>
-      </ul>
+      <div class="col-md-2 list-options">
+        <ul class>
+          <a class="new-list btn btn-primary" href="/groups/new">Create New group</a>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

@@ -1,14 +1,19 @@
 <div class="group">
   <div class="row">
-    <div class="col-sm-3">
-      <h1 class="group-name"><%= group.name %></h1>
-    </div>
-    <div class="col-sm-6 group-description" >
-      <h4><%= group.description %></h4>
-    </div>
-    <div class="col-sm-1">
-      <%= button_to 'Delete Group', {controller: 'groups', :id => group.id}, {:method=>:delete, class: "btn btn-small", data: {confirm: "You sure?"}} %>
-    </div>
+    <span class="collapse-target">
+			<div class="col-md-3">
+					<h3 class="group-name">
+						<i class="fa fa-caret-right dropdown"></i>
+						<%= group.name %>
+					</h3>
+			</div>
+			<div class="col-md-6 group-description" >
+				<h4><%= group.description %></h4>
+			</div>
+      <div class="col-md-1">
+        <%= button_to 'Delete Group', {controller: 'groups', :id => group.id}, {:method=>:delete, class: "btn btn-small", data: {confirm: "You sure?"}} %>
+      </div>
+		</span>
   </div>
   <div class="row group-details item-hide">
     <div class="col-sm-5">
