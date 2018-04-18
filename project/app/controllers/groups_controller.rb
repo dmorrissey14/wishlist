@@ -68,6 +68,8 @@ class GroupsController < ApplicationController
   end
 
   def infer_user_from_string(user_string)
+    return nil if user_string.to_s.empty?
+
     # Is user_string an email?
     if user_string.include?('@')
       User.find_each do |record|
@@ -81,9 +83,9 @@ class GroupsController < ApplicationController
 
     # Attempt to locate the user ID in the string and use that.
     # Assuming string format is "user_name (user_id)"
-    start_index = user_string.index('(') + 1
-    end_index = user_string.index(')') - 1
+    start_index = user_string.index('(')
+    end_index = user_string.index(')')
     return nil if start_index.nil? || end_index.nil?
-    User.find_by id: user_string.slice(start_index..end_index)
+    User.find_by id: user_string.slice((start_index + 1)..(end_index + 1))
   end
 end
