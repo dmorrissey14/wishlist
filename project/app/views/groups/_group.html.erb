@@ -38,12 +38,14 @@
   </div>
   <div class="row group-details item-hide">
     <div class="col-sm-5">
+      <hr>
       <h3>Members</h3>
       <% group.users.each do |g| %>
         <h4><%= g.full_name %> </h4>
       <% end %>
     </div>
     <div class="col-sm-5">
+      <hr>
       <h3>Lists</h3>
       <% group.lists.each do |g| %>
         <h4><%= link_to g.name, list_path(g) %> </h4>
