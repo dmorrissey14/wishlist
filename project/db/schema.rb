@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180328160540) do
+ActiveRecord::Schema.define(version: 20180419000932) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name", limit: 100, null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20180328160540) do
     t.string "description", limit: 100, null: false
     t.string "comments", limit: 300
     t.string "site_link", limit: 100
+    t.string "image_link", limit: 100
     t.integer "quantity", default: 1, null: false
     t.integer "purchased", default: 0, null: false
     t.index ["list_id"], name: "index_list_items_on_list_id"
