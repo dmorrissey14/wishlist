@@ -45,6 +45,13 @@ describe UserSuggestionCache do
     end
   end
 
+  describe '#search_pool' do
+    it 'returns all users in the cache' do
+      cache = described_class.new(User.find(@start_user_index))
+      expect((cache.search_pool - cache.suggest_users('')).empty?).to be true
+    end
+  end
+
   describe '#suggest_users' do
     it 'works' do
       user = User.find(@start_user_index)

@@ -92,8 +92,12 @@ RSpec/InstanceVariable:
   Exclude:
     - 'spec/**/*.rb'
 
-RSpec/PredicateMatcher:
-  EnforcedStyle: explicit
+RSpec/MultipleExpectations:
+  Exclude:
+    - 'spec/**/*.rb'
 
 RSpec/NestedGroups:
   Max: 7
+
+RSpec/PredicateMatcher:
+  EnforcedStyle: explicit

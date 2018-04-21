@@ -4,15 +4,26 @@
     <h1 class="largeHeader">Create New Item:</h1>
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:List_Item, url: {action: :create}) do |f| %>
-      
-      <%= f.label :Description %>
+      <% if flash[:notice] %>
+        <div class="alert alert-danger"><strong>Error: </strong><%= flash[:notice] %></div>
+      <% end %>
+      <% if flash[:success] %>
+        <div class="alert alert-success"><strong>Success: </strong><%= flash[:success] %></div>
+      <% end %>
+      <% if flash[:warning] %>
+        <div class="alert alert-warning"><strong>Success: </strong><%= flash[:warning] %></div>
+      <% end %>
+      <%= f.label :'Item Name' %>
       <%= f.text_field :Description, class: 'form-control' %>
 
-      <%= f.label :Comments %>
+      <%= f.label :Description %>
       <%= f.text_field :Comments, class: 'form-control' %>
 
-      <%= f.label :Link %>
-      <%= f.text_field :Link, class: 'form-control' %>
+      <%= f.label :'Site URL' %>
+      <%= f.text_field :Site_Link, class: 'form-control' %>
+
+      <%= f.label :'Image URL Link (.jpg or .png)' %>
+      <%= f.text_field :Image_Link, class: 'form-control' %>
 
       <%= f.label :Quantity %>
       <%= f.text_field :Quantity, class: 'form-control' %>

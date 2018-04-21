@@ -5,6 +5,12 @@
     <% else %>
       <h3>  <%= link_to  list_item.description, list_item.site_link %></h3>
     <% end %>
+    <% unless list_item.image_link.blank? %>
+      <div class="thumbnail item-image">
+        <!-- This requires that the site_link property is set to an image URL, rather than a page. -->
+          <img alt="Bootstrap Thumbnail Second" src= "<%= list_item.image_link %>" />
+      </div>
+    <% end %>
   </div>
   <div class="col-md-4 item-comments">
     <%= list_item.comments %>
@@ -12,15 +18,25 @@
   <div class="col-md-2 item-quantity">
     <span>Quantity: <%= list_item.quantity %></span>
   </div>
-  <div class="col-md-1 item-purchased">
-    <% if list_item.purchased? && viewable?(list_item) %>
-            Purchased: Yes
-    <% else %>
-            Purchased: No
-    <% end %>
-  </div>
-  <div class="col-md-1">
-    <%= button_to  "Delete",  {controller: 'list_items', :action => 'destroy', id: list_item.id}, 
-                                      {:method => :delete, :confirm => 'Are you sure?', :remote => true, class: "btn btn-primary"} %>
-  </div>
+  <% unless current_user.id == list_item.list.user_id %>
+    <div class="col-md-1 item-purchased">
+      <% if list_item.purchased? %>
+              Purchased: Yes
+      <% else %>
+              Purchased: No
+      <% end %>
+    </div>
+  <% end %>
+  <% unless current_user.id != list_item.list.user_id %>
+    <div class="col-md-1">
+      <%= button_to  "Delete",  {controller: 'list_items', :action => 'destroy', id: list_item.id}, 
+                                        {:method => :delete, :confirm => 'Are you sure?', :remote => true, class: "btn btn-primary"} %>
+    </div>
+  <% end %>
+  <% unless current_user.id == list_item.list.user_id %>
+    <div class="col-md-1">
+      <%= button_to  "Mark Purchased",  {controller: 'list_items', :action => 'destroy', id: list_item.id}, 
+                                        {:method => :delete, :remote => true, class: "btn btn-primary"} %>
+    </div>
+  <% end %>
 </div>

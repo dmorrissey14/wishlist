@@ -67,6 +67,12 @@ class User < ApplicationRecord
     first_name + ' ' + last_name
   end
 
+  # Returns a display string containing the user's full name
+  # and user ID.
+  def display_string
+    full_name + ' (' + id.to_s + ')'
+  end
+
   private
 
   # Deletes all lists owned by the user.

@@ -1,40 +1,55 @@
 <div class="group-header">
-	<div class="row">
-		<div class="col-md-3">
-				<h1 class="group-name"><%= group.name %></h1>
-		</div>
-		<div class="col-md-6 group-description" >
-							<h4><%= group.description %></h4>
-		</div>
-		<div class="col-md-1">
-			<h3>Members</h3>
-			<% group.users.each do |g| %>
-				<h4><%= g.first_name %> </h4>
-			<% end %>
-		</div>
-		<div class="col-md-1">
-						<%=  button_to 'Delete Group', {controller: 'groups', :id => group.id}, {:method=>:delete, class: "btn btn-small", data: {confirm: "You sure?"}} %>
-		</div>
-		<div class="col-md-1">
-			<%= form_for group do |f| %>
-				<%= f.text_field :user_id%>
-				<%= f.hidden_field :id %>
-				<%= f.submit "Add User", class: "btn btn-small"%>
-		<% end %> 
-		</div>
-		<div class="col-md-1">
-			<h3>Lists</h3>
-			<% group.lists.each do |g| %>
-				<h4><%= link_to g.name, list_path(g) %> </h4>
-			<% end %>
-		</div>
-		<div class="col-md-1">
-			<%= form_for group do |f| %>
-				<%= select("list", "id", current_user.lists.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Select List'}) %>
-				<%= f.hidden_field :id %>
-				<%= f.submit "Add List", class: "btn btn-small"%>
-		<% end %> 
-		</div>
-	</div>
+  <div class="row">
+    <span class="collapse-target">
+			<div class="col-md-3">
+					<h3 class="group-name">
+						<i class="fa fa-caret-right dropdown"></i>
+						<%= group.name %>
+					</h3>
+			</div>
+			<div class="col-md-6 group-description" >
+				<h4><%= group.description %></h4>
+			</div>
+      <div class="col-md-1">
+        <%= button_to 'Delete Group', {controller: 'groups', :id => group.id}, {:method=>:delete, class: "btn btn-small", data: {confirm: "You sure?"}} %>
+      </div>
+		</span>
+  </div>
+  <div class="row group-details item-hide">
+    <div class="col-sm-5">
+      <%= form_for group do |f| %>
+        <%= f.text_field :user_id, list: 'suggested_users_' + group.id.to_s %>
+        <datalist id="<%= 'suggested_users_' + group.id.to_s %>">
+          <% @cache.search_pool.each do |u| %>
+            <% next if u.groups.include?(group) %>
+            <option value="<%= u.display_string %>"><%= u.id %></option>
+          <% end %>
+        </datalist>
+        <%= f.submit "Add User", class: "btn btn-small"%>
+      <% end %> 
+    </div>
+    <div class="col-sm-5">
+      <%= form_for group do |f| %>
+        <%= select("list", "id", current_user.lists.all.collect {|p| [ p.name, p.id ] }, {prompt: 'Select List'}) %>
+        <%= f.hidden_field :id %>
+        <%= f.submit "Add List", class: "btn btn-small"%>
+      <% end %> 
+    </div>
+  </div>
+  <div class="row group-details item-hide">
+    <div class="col-sm-5">
+      <hr>
+      <h3>Members</h3>
+      <% group.users.each do |g| %>
+        <h4><%= g.full_name %> </h4>
+      <% end %>
+    </div>
+    <div class="col-sm-5">
+      <hr>
+      <h3>Lists</h3>
+      <% group.lists.each do |g| %>
+        <h4><%= link_to g.name, list_path(g) %> </h4>
+      <% end %>
+    </div>
+  </div>
 </div>
-
