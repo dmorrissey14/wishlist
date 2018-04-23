@@ -24,7 +24,7 @@ test:
 
 production:
   <<: *default
-  database: TheWishList
+  database: ProductionTheWishList
   host: <%= ENV['WISH_LIST_RDS_HOSTNAME'] %>
   port: <%= ENV['WISH_LIST_RDS_PORT'] %>
   username: <%= ENV['WISH_LIST_RDS_USERNAME'] %>

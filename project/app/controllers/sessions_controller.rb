@@ -14,12 +14,11 @@ class SessionsController < ApplicationController
     User.find_each do |record|
       if BCrypt::Password.new(record[:email_hash]).is_password?(email)
         @user = record
+        @match = BCrypt::Password.new(@user[:password_hash]).is_password?(password)
       end
     end
 
-    match = BCrypt::Password.new(@user[:password_hash]).is_password?(password)
-
-    if match
+    if @match
       log_in @user
       remember @user
       redirect_to '/lists'
