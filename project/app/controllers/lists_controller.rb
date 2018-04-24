@@ -14,26 +14,17 @@ class ListsController < ApplicationController
     end
   end
 
+  def show
+    @list = List.find(params[:id])
+    return if @list.nil?
+    redirect_to '/lists' unless @list.viewer?(current_user)
+  end
+
   def destroy
     list = List.find(params[:id])
     return if list.nil?
     list.destroy
     flash[:warning] = 'List Deleted'
     redirect_to '/lists'
-  end
-
-  def view_list
-    @list = List.find(params[:id])
-    @current_user = current_user
-    return if @list.nil?
-    redirect_to '/lists' unless @list.viewer?(current_user)
-    @items = @list.list_items
-    redirect_to '/list_items', @items, @list, @current_user
-  end
-
-  def show
-    @list = List.find(params[:id])
-    return if @list.nil?
-    redirect_to '/lists' unless @list.viewer?(current_user)
   end
 end

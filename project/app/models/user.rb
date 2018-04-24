@@ -30,8 +30,12 @@ class User < ApplicationRecord
   validates :password,
             presence: true,
             format: { with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{8,}\z/ }
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :first_name,
+            presence: true,
+            format: { with: /\A[A-Za-z0-9.&]*\z/ } # Don't allow special chars
+  validates :last_name,
+            presence: true,
+            format: { with: /\A[A-Za-z0-9.&]*\z/ } # Don't allow special chars
 
   # Callbacks
   before_destroy :delete_owned_lists

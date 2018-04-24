@@ -1,5 +1,9 @@
 # Controller for accessing and manipulating List Items.
 class ListItemsController < ApplicationController
+  def new
+    @list = List.find(params[:id])
+  end
+
   def create
     @list = List.find(params[:List_Item][:list_id])
     @item = ListItem.new(list_id:      @list.id,
@@ -55,10 +59,6 @@ class ListItemsController < ApplicationController
     end
   end
 
-  def new
-    @list = List.find(params[:id])
-  end
-
   def destroy
     item = ListItem.find(params[:id])
     if item.list.user_id != current_user.id
@@ -77,6 +77,8 @@ class ListItemsController < ApplicationController
 
   private
 
+  # Returns whether or not the image link is
+  # of an acceptable format for an image URL.
   def valid_image_url?
     valid_site_url? &&
       (params[:List_Item][:Image_Link]['.jpg'] ||
@@ -84,6 +86,8 @@ class ListItemsController < ApplicationController
       params[:List_Item][:Image_Link]['.apng'])
   end
 
+  # Returns whether or not the site link is
+  # of an acceptable format for an site URL.
   def valid_site_url?
     !params[:List_Item][:Site_Link].empty? &&
       (params[:List_Item][:Site_Link]['http://'] ||

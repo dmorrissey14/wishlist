@@ -17,14 +17,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  def destroy
-    group = Group.find(params[:id])
-    return if group.nil?
-    group.destroy
-    flash[:warning] = 'Group Deleted'
-    redirect_to '/groups'
-  end
-
   def show
     if logged_in?
       @user = current_user
@@ -42,6 +34,14 @@ class GroupsController < ApplicationController
     else
       add_user_to_group(group)
     end
+    redirect_to '/groups'
+  end
+
+  def destroy
+    group = Group.find(params[:id])
+    return if group.nil?
+    group.destroy
+    flash[:warning] = 'Group Deleted'
     redirect_to '/groups'
   end
 
