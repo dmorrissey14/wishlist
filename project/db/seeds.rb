@@ -12,8 +12,10 @@ case Rails.env
 # Do development environment specific seeding here.
 when 'development'
   # Common development account
-  User.create(email: 'dev@thewishlist.com', password: 'Th3W1shL1st',
-              first_name: 'WishList', last_name: 'Dev')
+  User.create(email:      'dev@thewishlist.com',
+              password:   'Th3W1shL1st',
+              first_name: 'WishList',
+              last_name:  'Dev')
 
   # Common development account pre-configured for manual performance tests
   perf_user = User.create(email:      'perftest@thewishlist.com',
