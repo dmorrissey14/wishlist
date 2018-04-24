@@ -5,10 +5,7 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    User.digest(params[:session][:password])
-    User.digest(params[:session][:email])
-
-    email = params[:session][:email]
+    email = params[:session][:email].downcase
     password = params[:session][:password]
 
     User.find_each do |record|

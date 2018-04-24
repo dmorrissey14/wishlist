@@ -18,7 +18,7 @@
   <div class="row group-details item-hide">
     <div class="col-sm-5">
       <%= form_for group do |f| %>
-        <%= f.text_field :user_id, list: 'suggested_users_' + group.id.to_s %>
+        <%= f.text_field :user_id, placeholder:"Enter user's name or email", list: 'suggested_users_' + group.id.to_s %>
         <datalist id="<%= 'suggested_users_' + group.id.to_s %>">
           <% @cache.search_pool.each do |u| %>
             <% next if u.groups.include?(group) %>

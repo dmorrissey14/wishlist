@@ -59,12 +59,10 @@ class GroupsController < ApplicationController
 
   def add_user_to_group(group)
     user = infer_user_from_string(params[:group][:user_id])
-    unless user.nil?
-      return if group.users.include?(user)
-      group.users.push(user)
-      return if group.save
-    end
-    flash.now[:notice] = 'Could not update users'
+    return if user.nil?
+    return if group.users.include?(user)
+    group.users.push(user)
+    group.save
   end
 
   def infer_user_from_string(user_string)
@@ -72,12 +70,13 @@ class GroupsController < ApplicationController
 
     # Is user_string an email?
     if user_string.include?('@')
+      email = user_string.downcase
       User.find_each do |record|
-        if BCrypt::Password.new(record[:email_hash]).is_password?(user_string)
+        if BCrypt::Password.new(record[:email_hash]).is_password?(email)
           return record
         end
       end
-      flash.now[:notice] = 'Could not find user with provided address.'
+      flash[:notice] = 'Could not find user with provided email address.'
       return nil
     end
 

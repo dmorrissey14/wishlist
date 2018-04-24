@@ -5,6 +5,7 @@ class User < ApplicationRecord
   attr_reader :email, :password
 
   def email=(value)
+    value = value.downcase
     @email = value
     write_attribute(:email_hash, User.digest(value))
   end

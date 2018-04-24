@@ -37,10 +37,12 @@ class ListItemsController < ApplicationController
     error_msg += warning_item_name if params[:List_Item][:Description].empty?
 
     # Validate Image URL
-    error_msg += warning_image_url unless valid_image_url?
+    error_msg += warning_image_url unless valid_image_url? ||
+                                          params[:List_Item][:Image_Link].empty?
 
     # Validate Site URL
-    error_msg += warning_site_url unless valid_site_url?
+    error_msg += warning_site_url unless valid_site_url? ||
+                                         params[:List_Item][:Site_Link].empty?
 
     # Only save the item if there were no validation errors
     if error_msg.empty? && @item.save
@@ -84,7 +86,7 @@ class ListItemsController < ApplicationController
 
   def valid_site_url?
     !params[:List_Item][:Site_Link].empty? &&
-      (params[:List_Item][:Image_Link]['http://'] ||
-      params[:List_Item][:Image_Link]['https://'])
+      (params[:List_Item][:Site_Link]['http://'] ||
+      params[:List_Item][:Site_Link]['https://'])
   end
 end

@@ -73,7 +73,7 @@ describe User, type: :model do
   end
 
   describe '#update' do
-    it 'can be updated' do
+    it 'user name can be updated' do
       user = User.create(email: test_email, password: test_password,
                          first_name: test_first_name, last_name: test_last_name)
       expect(User.exists?(user.id)).to be true
@@ -86,8 +86,8 @@ describe User, type: :model do
                          first_name: test_first_name, last_name: test_last_name)
       expect(User.exists?(user.id)).to be true
       user.update(email: test_email2)
-      expect(user.email).to eq(test_email2)
-      expect(BCrypt::Password.new(user[:password_hash]).is_password?(test_password)).to be true
+      expect(user.email).to eq(test_email2.downcase)
+      expect(BCrypt::Password.new(user.password_hash).is_password?(test_password)).to be true
     end
     it 'password can be updated' do
       user = User.create(email: test_email, password: test_password,
@@ -95,7 +95,7 @@ describe User, type: :model do
       expect(User.exists?(user.id)).to be true
       user.update(password: test_password2)
       expect(user.password).to eq(test_password2)
-      expect(BCrypt::Password.new(user[:password_hash]).is_password?(test_password2)).to be true
+      expect(BCrypt::Password.new(user.password_hash).is_password?(test_password2)).to be true
     end
   end
 
