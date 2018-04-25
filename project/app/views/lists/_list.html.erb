@@ -11,15 +11,17 @@
 				<h4><%= list.description %></h4>
 			</div>
 		</span>
-		<div class="col-md-1">
-				<%= button_to  "Add Item", {controller: 'list_items', id: list.id, action: 'new'}, {method: :post, class: "btn btn-small add-item" } %>
-		</div>
-		<div class="col-md-1">
-				<%= button_to 'Delete List', {controller: 'lists', id: list.id, action: 'destroy'}, {:method=>:delete, class: "btn btn-small delete-list", data: {confirm: "You sure?"}} %>
-		</div>
+		<% unless current_user.id != list.user_id %>
+			<div class="col-md-1">
+					<%= button_to  "Add Item", {controller: 'list_items', id: list.id, action: 'new'}, {method: :post, class: "btn btn-small add-item" } %>
+			</div>
+			<div class="col-md-1">
+					<%= button_to 'Delete List', {controller: 'lists', id: list.id, action: 'destroy'}, {:method=>:delete, class: "btn btn-small delete-list", data: {confirm: "You sure?"}} %>
+			</div>
+		<% end %>
 	</div>
 	<% if list.list_items.any? %>
-		<%= render list.list_items %>
+		<%= render list.list_items  %>
 	<% else %>
 		<p class = "list-item item-hide">Empty wish list</p>
 	<% end %>

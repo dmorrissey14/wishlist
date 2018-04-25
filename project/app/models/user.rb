@@ -5,6 +5,7 @@ class User < ApplicationRecord
   attr_reader :email, :password
 
   def email=(value)
+    value = value.downcase
     @email = value
     write_attribute(:email_hash, User.digest(value))
   end
@@ -29,8 +30,12 @@ class User < ApplicationRecord
   validates :password,
             presence: true,
             format: { with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{8,}\z/ }
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :first_name,
+            presence: true,
+            format: { with: /\A[A-Za-z0-9.&]*\z/ } # Don't allow special chars
+  validates :last_name,
+            presence: true,
+            format: { with: /\A[A-Za-z0-9.&]*\z/ } # Don't allow special chars
 
   # Callbacks
   before_destroy :delete_owned_lists
@@ -65,6 +70,12 @@ class User < ApplicationRecord
   # Returns the full name of the user.
   def full_name
     first_name + ' ' + last_name
+  end
+
+  # Returns a display string containing the user's full name
+  # and user ID.
+  def display_string
+    full_name + ' (' + id.to_s + ')'
   end
 
   private

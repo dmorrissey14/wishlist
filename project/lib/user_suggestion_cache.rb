@@ -27,10 +27,18 @@ class UserSuggestionCache
     end
   end
 
+  # Returns all users in the cache's search pool.
+  def search_pool
+    @mutex.synchronize do
+      @users.to_ary
+    end
+  end
+
   # Queries the cache contents to suggest users whose full names contain
   # the provided substring. The results are returned as an array.
   def suggest_users(substr)
     return [] unless initialized?
+    return @users if substr.empty?
     @mutex.synchronize do
       search_pool = if @last_substr && (substr.downcase.include? @last_substr)
                       @last_results

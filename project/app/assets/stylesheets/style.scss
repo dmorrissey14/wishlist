@@ -60,3 +60,11 @@ body{
   color:$red-accent !important;
   padding-left:25px;
 }
+
+.bg{
+  background-image: image-url("background-gift.jpeg");
+  height: 100%; 
+  // background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}

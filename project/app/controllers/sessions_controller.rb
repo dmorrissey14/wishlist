@@ -5,21 +5,17 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    User.digest(params[:session][:password])
-    User.digest(params[:session][:email])
-
-    email = params[:session][:email]
+    email = params[:session][:email].downcase
     password = params[:session][:password]
 
     User.find_each do |record|
       if BCrypt::Password.new(record[:email_hash]).is_password?(email)
         @user = record
+        @match = BCrypt::Password.new(@user[:password_hash]).is_password?(password)
       end
     end
 
-    match = BCrypt::Password.new(@user[:password_hash]).is_password?(password)
-
-    if match
+    if @match
       log_in @user
       remember @user
       redirect_to '/lists'

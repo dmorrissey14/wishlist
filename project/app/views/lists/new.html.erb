@@ -3,6 +3,9 @@
   <div class="grid">
   <div class="col-md-6 col-md-offset-3">
    <h1 class="largeHeader">Create New List:</h1>
+    <% if flash[:notice] %>
+      <div class="alert alert-danger"><strong>Error: </strong><%= flash[:notice] %></div>
+    <% end %>
     <%= form_for(List.new) do |f| %>
 
       <%= f.label :name %>
@@ -16,5 +19,4 @@
     </div><!-- end column 2 contact form -->
   </div><!-- end grid -->
 </div><!-- end mainContent -->
-
 
