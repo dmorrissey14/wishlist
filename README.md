@@ -41,7 +41,10 @@ Prior to opening the repository, you'll need the following installed on your mac
  
  # Deployment
  
- Ben can you fill out this section?
+ * Request IAM authentication credentials from AWS account owner. 
+ * Install Elastic Beanstalk CLI and dependencies.
+ * Run "eb init" in project folder and follow through the prompts. Our production environment is called "aws-deploy".
+ * Run "eb deploy" in the project folder.
  
  # Built With
  
