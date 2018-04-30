@@ -25,7 +25,7 @@ Prior to opening the repository, you'll need the following installed on your mac
  
  After copying the repository there are two steps to get the web application up and running
  
- * Navigate to the `/project` file of the repository and run the command `bundle install`. This will install all gems specified in the project, giving you all required dependencies
+ * Navigate to the `/project` folder of the repository and run the command `bundle install`. This will install all gems specified in the project, giving you all required dependencies
  * Create the environment variables for database access. The environment variable names must match those used in the `/project/config/database.yml` file. Make sure to restart your shell and/or IDE following the creation of these variables.
  * Navigate to the `/project/bin` folder and run `rake db:create`. This will set up your database schema on your installed instance of SQL Server. (Note: if this shows connection issues, please ensure your environment variables are set correctly.)
  
